@@ -34,15 +34,15 @@ func _process(delta: float) -> void:
 func check_input(beats_elapsed):
 	var input = -1
 	
-	if !Input.is_action_just_pressed("InputLeft") or !Input.is_action_just_pressed("InputMiddle") or !Input.is_action_just_pressed("InputRight"):
-		return
-		
 	if Input.is_action_just_pressed("InputLeft"):
 		input = 0
 	elif Input.is_action_just_pressed("InputMiddle"):
 		input = 1
 	elif Input.is_action_just_pressed("InputRight"):
 		input = 2
+	else:
+		# No input
+		return
 	
 	var beat_whole = round(beats_elapsed)
 	var difference = abs(beats_elapsed - beat_whole)
