@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cswvepkr1um18"]
+
+[ext_resource type="Script" path="res://assets/scripts/tomato_shooter.gd" id="1_v0rqh"]
+[ext_resource type="Texture2D" uid="uid://cp1ayvxq1h4b0" path="res://icon.svg" id="2_s6651"]
+
+[node name="TomatoShooter" type="Node2D"]
+script = ExtResource("1_v0rqh")
+
+[node name="TomatoSpawnLeft" type="Node2D" parent="."]
+position = Vector2(-662, 356)
+
+[node name="TomatoSpawnMiddle" type="Node2D" parent="."]
+position = Vector2(-12, 328)
+
+[node name="TomatoSpawnRight" type="Node2D" parent="."]
+position = Vector2(632, 358)
+
+[node name="Crosshair" type="Sprite2D" parent="."]
+texture = ExtResource("2_s6651")

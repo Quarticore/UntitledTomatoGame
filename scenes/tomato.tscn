@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dog8o4858ere7"]
+
+[ext_resource type="Texture2D" uid="uid://cp1ayvxq1h4b0" path="res://icon.svg" id="1_wpaf5"]
+[ext_resource type="Script" path="res://assets/scripts/tomato.gd" id="2_r1ndb"]
+
+[node name="Tomato" type="Sprite2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_wpaf5")
+script = ExtResource("2_r1ndb")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
