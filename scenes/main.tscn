@@ -1,16 +1,20 @@
-[gd_scene load_steps=14 format=3 uid="uid://de4vrd6yr3nho"]
+[gd_scene load_steps=16 format=3 uid="uid://de4vrd6yr3nho"]
 
 [ext_resource type="Script" path="res://assets/scripts/pause.gd" id="1_3bpvp"]
 [ext_resource type="Script" path="res://assets/scripts/selection_manager.gd" id="1_l4jld"]
-[ext_resource type="PackedScene" path="res://scenes/member.tscn" id="2_ak1xx"]
+[ext_resource type="PackedScene" uid="uid://rf7wiy4b21xh" path="res://scenes/member.tscn" id="2_ak1xx"]
 [ext_resource type="PackedScene" uid="uid://cpp7ddhx8pqcf" path="res://scenes/audio_manager.tscn" id="3_m7yqh"]
-[ext_resource type="PackedScene" uid="uid://drvcf7ngfwjb1" path="res://scenes/beat_indicator.tscn" id="4_xrbsb"]
+[ext_resource type="Script" path="res://assets/scripts/camera_scale.gd" id="4_k61ne"]
+[ext_resource type="PackedScene" uid="uid://d2q3qtuygsylc" path="res://scenes/beat_indicator.tscn" id="4_xrbsb"]
 [ext_resource type="Script" path="res://assets/scripts/gameplay_ui.gd" id="5_03y6y"]
 
 [sub_resource type="Gradient" id="Gradient_w5xsi"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_1rt5t"]
 gradient = SubResource("Gradient_w5xsi")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2vaab"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Animation" id="Animation_3c3il"]
 length = 0.001
@@ -24,7 +28,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_2pfcc"]
@@ -88,22 +92,37 @@ texture = SubResource("GradientTexture2D_1rt5t")
 
 [node name="MainCamera" type="Camera2D" parent="."]
 position = Vector2(960, 544)
+script = ExtResource("4_k61ne")
+
+[node name="ViewportTextureRect" type="TextureRect" parent="MainCamera"]
+offset_left = -960.0
+offset_top = -544.0
+offset_right = 960.0
+offset_bottom = 536.0
+pivot_offset = Vector2(960, 540)
+texture = SubResource("ViewportTexture_2vaab")
+expand_mode = 2
 
 [node name="AudioManager" parent="." instance=ExtResource("3_m7yqh")]
 
-[node name="GameplayUI" type="Node2D" parent="."]
-modulate = Color(1, 1, 1, 0)
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+
+[node name="GameplayUI" type="Node2D" parent="SubViewport"]
 script = ExtResource("5_03y6y")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="GameplayUI"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewport/GameplayUI"]
 libraries = {
 "": SubResource("AnimationLibrary_p7led")
 }
 
-[node name="BeatIndicator" parent="GameplayUI" node_paths=PackedStringArray("audio_manager") instance=ExtResource("4_xrbsb")]
-audio_manager = NodePath("../../AudioManager")
+[node name="BeatIndicator" parent="SubViewport/GameplayUI" node_paths=PackedStringArray("audio_manager") instance=ExtResource("4_xrbsb")]
+audio_manager = NodePath("../../../AudioManager")
 
-[node name="HitQualityIndicator" type="Label" parent="GameplayUI"]
+[node name="HitQualityIndicator" type="Label" parent="SubViewport/GameplayUI"]
 offset_left = 1056.0
 offset_top = 800.0
 offset_right = 1136.0
@@ -117,4 +136,4 @@ label_settings = SubResource("LabelSettings_5fu4v")
 [connection signal="selected" from="Member2" to="SelectionManager" method="_on_member_2_selected"]
 [connection signal="hovered" from="Member3" to="SelectionManager" method="_on_member_3_hovered"]
 [connection signal="selected" from="Member3" to="SelectionManager" method="_on_member_3_selected"]
-[connection signal="rhythm_input" from="AudioManager" to="GameplayUI" method="_on_audio_manager_rhythm_input"]
+[connection signal="rhythm_input" from="AudioManager" to="SubViewport/GameplayUI" method="_on_audio_manager_rhythm_input"]

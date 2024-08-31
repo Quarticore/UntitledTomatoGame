@@ -8,7 +8,7 @@ extends Node
 
 func on_select_any():
 	var gameplay_ui = get_node("/root/Main/GameplayUI")
-	gameplay_ui.play_show()
+	# gameplay_ui.play_show()
 
 func _on_member_hovered() -> void:
 	Light.global_position.x = Member1.global_position.x
