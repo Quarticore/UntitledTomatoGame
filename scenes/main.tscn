@@ -1,10 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://de4vrd6yr3nho"]
+[gd_scene load_steps=14 format=3 uid="uid://de4vrd6yr3nho"]
 
 [ext_resource type="Script" path="res://assets/scripts/pause.gd" id="1_3bpvp"]
 [ext_resource type="Script" path="res://assets/scripts/selection_manager.gd" id="1_l4jld"]
 [ext_resource type="PackedScene" uid="uid://rf7wiy4b21xh" path="res://scenes/member.tscn" id="2_ak1xx"]
 [ext_resource type="PackedScene" uid="uid://cpp7ddhx8pqcf" path="res://scenes/audio_manager.tscn" id="3_m7yqh"]
-[ext_resource type="PackedScene" path="res://scenes/beat_indicator.tscn" id="4_xrbsb"]
+[ext_resource type="PackedScene" uid="uid://d2q3qtuygsylc" path="res://scenes/beat_indicator.tscn" id="4_xrbsb"]
 [ext_resource type="Script" path="res://assets/scripts/gameplay_ui.gd" id="5_03y6y"]
 
 [sub_resource type="Gradient" id="Gradient_w5xsi"]
@@ -64,6 +64,9 @@ _data = {
 "fade_out": SubResource("Animation_5n3vl")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_5fu4v"]
+font_size = 32
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_3bpvp")
 
@@ -99,9 +102,18 @@ libraries = {
 [node name="BeatIndicator" parent="GameplayUI" node_paths=PackedStringArray("audio_manager") instance=ExtResource("4_xrbsb")]
 audio_manager = NodePath("../../AudioManager")
 
+[node name="HitQualityIndicator" type="Label" parent="GameplayUI"]
+offset_left = 1056.0
+offset_top = 800.0
+offset_right = 1136.0
+offset_bottom = 832.0
+text = "INDICATOR"
+label_settings = SubResource("LabelSettings_5fu4v")
+
 [connection signal="hovered" from="Member" to="SelectionManager" method="_on_member_hovered"]
 [connection signal="selected" from="Member" to="SelectionManager" method="_on_member_selected"]
 [connection signal="hovered" from="Member2" to="SelectionManager" method="_on_member_2_hovered"]
 [connection signal="selected" from="Member2" to="SelectionManager" method="_on_member_2_selected"]
 [connection signal="hovered" from="Member3" to="SelectionManager" method="_on_member_3_hovered"]
 [connection signal="selected" from="Member3" to="SelectionManager" method="_on_member_3_selected"]
+[connection signal="rhythm_input" from="AudioManager" to="GameplayUI" method="_on_audio_manager_rhythm_input"]

@@ -1,12 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://drvcf7ngfwjb1"]
+[gd_scene load_steps=3 format=3 uid="uid://d2q3qtuygsylc"]
 
 [ext_resource type="Script" path="res://assets/scripts/beat_indicator.gd" id="1_eay0s"]
 [ext_resource type="Texture2D" uid="uid://cp1ayvxq1h4b0" path="res://icon.svg" id="2_18v7o"]
 
-[node name="BeatIndicator" type="Node2D" node_paths=PackedStringArray("audio_manager")]
+[node name="BeatIndicator" type="Node2D"]
 position = Vector2(960, 900)
 script = ExtResource("1_eay0s")
-audio_manager = NodePath("")
 
 [node name="CentreIndicator" type="Sprite2D" parent="."]
 texture = ExtResource("2_18v7o")
