@@ -32,8 +32,17 @@ func _process(delta: float) -> void:
 	pass
 	
 func check_input(beats_elapsed):
-	if !Input.is_action_just_pressed("Input_PLEASE_REMOVE"):
+	var input = -1
+	
+	if !Input.is_action_just_pressed("InputLeft") or !Input.is_action_just_pressed("InputMiddle") or !Input.is_action_just_pressed("InputRight"):
 		return
+		
+	if Input.is_action_just_pressed("InputLeft"):
+		input = 0
+	elif Input.is_action_just_pressed("InputMiddle"):
+		input = 1
+	elif Input.is_action_just_pressed("InputRight"):
+		input = 2
 	
 	var beat_whole = round(beats_elapsed)
 	var difference = abs(beats_elapsed - beat_whole)
@@ -45,11 +54,11 @@ func check_input(beats_elapsed):
 		Accuracy.text = str(as_percentage) + "%\ncombo: " + str(combo)
 		
 		combo += 1
-		emit_signal("rhythm_input", as_percentage, combo)
+		emit_signal("rhythm_input", as_percentage, combo, input)
 		return
 	
 	Accuracy.text = "0%\ncombo: 0"
 	
 	combo = 0
-	emit_signal("rhythm_input", 0.0, combo)
+	emit_signal("rhythm_input", 0.0, combo, input)
 	emit_signal("combo_break")
