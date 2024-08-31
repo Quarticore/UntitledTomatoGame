@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpp7ddhx8pqcf"]
+
+[ext_resource type="Script" path="res://assets/scripts/metronome.gd" id="1_poad7"]
+[ext_resource type="AudioStream" uid="uid://0djf1vx32sdb" path="res://assets/audio/Macrolisk_LOOP_ALL.mp3" id="2_apns4"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_poad7")
+
+[node name="Player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_apns4")
+volume_db = -8.398
