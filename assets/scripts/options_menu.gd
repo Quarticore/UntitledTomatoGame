@@ -3,8 +3,8 @@ extends Menu
 
 @export var settings: GameSettings
 
-@onready var vol_slider: HSlider = $GridContainer/VolumeSlider
-@onready var vol_value: Label = $GridContainer/VolumeValue
+@onready var vol_slider: HSlider = $Panel/VBoxContainer/VolumeHBox/VolumeSlider
+@onready var vol_value: Label = $Panel/VBoxContainer/VolumeHBox/VolumeValue
 
 var main_menu: PackedScene = load("res://scenes/main_menu.tscn")
 
