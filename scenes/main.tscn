@@ -1,24 +1,16 @@
-[gd_scene load_steps=18 format=3 uid="uid://de4vrd6yr3nho"]
+[gd_scene load_steps=14 format=3 uid="uid://de4vrd6yr3nho"]
 
 [ext_resource type="Script" path="res://assets/scripts/pause.gd" id="1_3bpvp"]
 [ext_resource type="Script" path="res://assets/scripts/selection_manager.gd" id="1_l4jld"]
 [ext_resource type="PackedScene" uid="uid://rf7wiy4b21xh" path="res://scenes/member.tscn" id="2_ak1xx"]
 [ext_resource type="PackedScene" uid="uid://cpp7ddhx8pqcf" path="res://scenes/audio_manager.tscn" id="3_m7yqh"]
-[ext_resource type="Script" path="res://assets/scripts/camera_scale.gd" id="4_k61ne"]
 [ext_resource type="PackedScene" uid="uid://d2q3qtuygsylc" path="res://scenes/beat_indicator.tscn" id="4_xrbsb"]
 [ext_resource type="Script" path="res://assets/scripts/gameplay_ui.gd" id="5_03y6y"]
-[ext_resource type="Script" path="res://assets/scripts/viewport_display_input_forwarder.gd" id="5_frg55"]
 
 [sub_resource type="Gradient" id="Gradient_w5xsi"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_1rt5t"]
 gradient = SubResource("Gradient_w5xsi")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_4737g"]
-viewport_path = NodePath("UIViewport")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4peg"]
-size = Vector2(1920, 1080)
 
 [sub_resource type="Animation" id="Animation_3c3il"]
 length = 0.001
@@ -79,58 +71,52 @@ font_size = 32
 [node name="Main" type="Node2D"]
 script = ExtResource("1_3bpvp")
 
-[node name="SelectionManager" type="Node" parent="."]
-script = ExtResource("1_l4jld")
+[node name="GameContainer" type="SubViewportContainer" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
 
-[node name="Member" parent="." instance=ExtResource("2_ak1xx")]
-position = Vector2(480, 472)
-
-[node name="Member2" parent="." instance=ExtResource("2_ak1xx")]
-position = Vector2(912, 520)
-
-[node name="Member3" parent="." instance=ExtResource("2_ak1xx")]
-position = Vector2(1368, 488)
-
-[node name="Light" type="Sprite2D" parent="."]
-position = Vector2(944, 160)
-texture = SubResource("GradientTexture2D_1rt5t")
-
-[node name="MainCamera" type="Camera2D" parent="."]
-position = Vector2(960, 544)
-script = ExtResource("4_k61ne")
-
-[node name="ViewportTextureRect" type="Sprite2D" parent="MainCamera"]
-texture = SubResource("ViewportTexture_4737g")
-script = ExtResource("5_frg55")
-
-[node name="Area2D" type="Area2D" parent="MainCamera/ViewportTextureRect"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MainCamera/ViewportTextureRect/Area2D"]
-shape = SubResource("RectangleShape2D_t4peg")
-debug_color = Color(0, 0.6, 0.701961, 0.0352941)
-
-[node name="AudioManager" parent="." instance=ExtResource("3_m7yqh")]
-
-[node name="UIViewport" type="SubViewport" parent="."]
+[node name="GameViewport" type="SubViewport" parent="GameContainer"]
 unique_name_in_owner = true
 disable_3d = true
 transparent_bg = true
 handle_input_locally = false
+physics_object_picking = true
 size = Vector2i(1920, 1080)
 
-[node name="GameplayUI" type="Node2D" parent="UIViewport"]
+[node name="SelectionManager" type="Node" parent="GameContainer/GameViewport"]
+script = ExtResource("1_l4jld")
+
+[node name="Member" parent="GameContainer/GameViewport" instance=ExtResource("2_ak1xx")]
+position = Vector2(480, 472)
+
+[node name="Member2" parent="GameContainer/GameViewport" instance=ExtResource("2_ak1xx")]
+position = Vector2(912, 520)
+
+[node name="Member3" parent="GameContainer/GameViewport" instance=ExtResource("2_ak1xx")]
+position = Vector2(1368, 488)
+
+[node name="Light" type="Sprite2D" parent="GameContainer/GameViewport"]
+position = Vector2(944, 160)
+texture = SubResource("GradientTexture2D_1rt5t")
+
+[node name="MainCamera" type="Camera2D" parent="GameContainer/GameViewport"]
+position = Vector2(960, 544)
+
+[node name="AudioManager" parent="GameContainer/GameViewport" instance=ExtResource("3_m7yqh")]
+
+[node name="GameplayUI" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 script = ExtResource("5_03y6y")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UIViewport/GameplayUI"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameplayUI"]
 libraries = {
 "": SubResource("AnimationLibrary_p7led")
 }
 
-[node name="BeatIndicator" parent="UIViewport/GameplayUI" node_paths=PackedStringArray("audio_manager") instance=ExtResource("4_xrbsb")]
-audio_manager = NodePath("../../../AudioManager")
+[node name="BeatIndicator" parent="GameplayUI" node_paths=PackedStringArray("audio_manager") instance=ExtResource("4_xrbsb")]
+audio_manager = NodePath("../../GameContainer/GameViewport/AudioManager")
 
-[node name="HitQualityIndicator" type="Label" parent="UIViewport/GameplayUI"]
+[node name="HitQualityIndicator" type="Label" parent="GameplayUI"]
 offset_left = 1056.0
 offset_top = 800.0
 offset_right = 1136.0
@@ -138,11 +124,10 @@ offset_bottom = 832.0
 text = "INDICATOR"
 label_settings = SubResource("LabelSettings_5fu4v")
 
-[connection signal="hovered" from="Member" to="SelectionManager" method="_on_member_hovered"]
-[connection signal="selected" from="Member" to="SelectionManager" method="_on_member_selected"]
-[connection signal="hovered" from="Member2" to="SelectionManager" method="_on_member_2_hovered"]
-[connection signal="selected" from="Member2" to="SelectionManager" method="_on_member_2_selected"]
-[connection signal="hovered" from="Member3" to="SelectionManager" method="_on_member_3_hovered"]
-[connection signal="selected" from="Member3" to="SelectionManager" method="_on_member_3_selected"]
-[connection signal="input_event" from="MainCamera/ViewportTextureRect/Area2D" to="MainCamera/ViewportTextureRect" method="_on_area_2d_input_event"]
-[connection signal="rhythm_input" from="AudioManager" to="UIViewport/GameplayUI" method="_on_audio_manager_rhythm_input"]
+[connection signal="hovered" from="GameContainer/GameViewport/Member" to="GameContainer/GameViewport/SelectionManager" method="_on_member_hovered"]
+[connection signal="selected" from="GameContainer/GameViewport/Member" to="GameContainer/GameViewport/SelectionManager" method="_on_member_selected"]
+[connection signal="hovered" from="GameContainer/GameViewport/Member2" to="GameContainer/GameViewport/SelectionManager" method="_on_member_2_hovered"]
+[connection signal="selected" from="GameContainer/GameViewport/Member2" to="GameContainer/GameViewport/SelectionManager" method="_on_member_2_selected"]
+[connection signal="hovered" from="GameContainer/GameViewport/Member3" to="GameContainer/GameViewport/SelectionManager" method="_on_member_3_hovered"]
+[connection signal="selected" from="GameContainer/GameViewport/Member3" to="GameContainer/GameViewport/SelectionManager" method="_on_member_3_selected"]
+[connection signal="rhythm_input" from="GameContainer/GameViewport/AudioManager" to="GameplayUI" method="_on_audio_manager_rhythm_input"]

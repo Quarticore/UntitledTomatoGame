@@ -1,13 +1,14 @@
 extends Node
 
-@onready var Light: Sprite2D = get_node("/root/Main/Light")
-@onready var Member1: Node2D = get_node("/root/Main/Member")
-@onready var Member2: Node2D = get_node("/root/Main/Member2")
-@onready var Member3: Node2D = get_node("/root/Main/Member3")
-@onready var Camera: Camera2D = get_node("/root/Main/MainCamera")
+var root_path = "/root/Main/GameContainer/GameViewport/"
+@onready var Light: Sprite2D = get_node(root_path + "Light")
+@onready var Member1: Node2D = get_node(root_path + "Member")
+@onready var Member2: Node2D = get_node(root_path + "Member2")
+@onready var Member3: Node2D = get_node(root_path + "Member3")
+@onready var Camera: Camera2D = get_node(root_path + "MainCamera")
 
 func on_select_any():
-	var gameplay_ui = get_node("/root/Main/UIViewport/GameplayUI")
+	var gameplay_ui = get_node("/root/Main/GameplayUI")
 	gameplay_ui.play_show()
 
 func _on_member_hovered() -> void:

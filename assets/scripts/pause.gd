@@ -3,8 +3,6 @@ extends Node
 const MENU = preload("res://scenes/main_menu.tscn")
 var menu_ref = null
 
-@onready var ui_viewport = %UIViewport
-
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Pause"):
@@ -14,6 +12,6 @@ func _process(delta: float) -> void:
 		else:
 			# Instantiate the menu in the ui viewport
 			menu_ref = MENU.instantiate()
-			ui_viewport.add_child.call_deferred(menu_ref)
+			get_tree().root.add_child.call_deferred(menu_ref)
 		
 	pass
