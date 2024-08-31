@@ -11,19 +11,19 @@
 [sub_resource type="Resource" id="Resource_yb7fm"]
 script = ExtResource("4_wvsy8")
 chance_to_change = 1.0
-valid_positions = [1, 16, 256]
+valid_positions = [Vector3(0, 0, 1), Vector3(0, 1, 0), Vector3(1, 0, 0)]
 maybe_change_every_x_beats = 3
 
 [sub_resource type="Resource" id="Resource_yb2n4"]
 script = ExtResource("4_wvsy8")
 chance_to_change = 1.0
-valid_positions = [1, 16, 256]
+valid_positions = [Vector3(0, 0, 1), Vector3(0, 1, 0), Vector3(1, 0, 0)]
 maybe_change_every_x_beats = 1
 
 [sub_resource type="Resource" id="Resource_exxfo"]
 script = ExtResource("4_wvsy8")
 chance_to_change = 1.0
-valid_positions = [1, 16, 256]
+valid_positions = [Vector3(0, 0, 1), Vector3(0, 1, 0), Vector3(1, 0, 0)]
 maybe_change_every_x_beats = 1
 
 [sub_resource type="Gradient" id="Gradient_w5xsi"]

@@ -5,7 +5,7 @@ class_name EnemyPattern extends Resource
 	set(val):
 		chance_to_change = val
 		emit_changed()
-@export var valid_positions = [0x00000001,0x00000010,0x00000100]:
+@export var valid_positions = [Vector3(0, 0, 1), Vector3(0, 1, 0), Vector3(1, 0, 0)]:
 	set(val):
 		valid_positions = val
 		emit_changed()
