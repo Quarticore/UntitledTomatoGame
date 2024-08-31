@@ -1,4 +1,4 @@
-extends Control
+extends Menu
 
 
 @export var settings: GameSettings
@@ -21,6 +21,7 @@ func _on_settings_changed() -> void:
 func _on_volume_slider_value_changed(value: float) -> void:
 	settings.volume = value
 
+
 func _on_back_button_pressed() -> void:
-	get_tree().root.add_child(main_menu.instantiate())
+	add_to_scene(main_menu.instantiate())
 	queue_free()
