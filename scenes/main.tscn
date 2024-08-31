@@ -26,6 +26,12 @@ position = Vector2(1368, 488)
 position = Vector2(944, 160)
 texture = SubResource("GradientTexture2D_1rt5t")
 
+[node name="MainCamera" type="Camera2D" parent="."]
+position = Vector2(960, 544)
+
 [connection signal="hovered" from="Member" to="SelectionManager" method="_on_member_hovered"]
+[connection signal="selected" from="Member" to="SelectionManager" method="_on_member_selected"]
 [connection signal="hovered" from="Member2" to="SelectionManager" method="_on_member_2_hovered"]
+[connection signal="selected" from="Member2" to="SelectionManager" method="_on_member_2_selected"]
 [connection signal="hovered" from="Member3" to="SelectionManager" method="_on_member_3_hovered"]
+[connection signal="selected" from="Member3" to="SelectionManager" method="_on_member_3_selected"]
