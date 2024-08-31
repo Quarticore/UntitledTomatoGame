@@ -5,6 +5,7 @@ signal rhythm_input
 signal combo_break
 
 @onready var Player: AudioStreamPlayer = $Player
+@export var beat_linear: float = 0.0
 var input_within = 0.2
 var input_offset = -0.4
 var bpm = 125.0
@@ -23,6 +24,8 @@ func _process(delta: float) -> void:
 		return
 	
 	var beats_elapsed: float = (Player.get_playback_position() / (1 / bps)) + offset
+	
+	beat_linear = beats_elapsed - floor(beats_elapsed)
 	
 	check_input(beats_elapsed + input_offset)
 	
