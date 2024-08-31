@@ -104,7 +104,6 @@ texture = SubResource("ViewportTexture_4737g")
 script = ExtResource("5_frg55")
 
 [node name="Area2D" type="Area2D" parent="MainCamera/ViewportTextureRect"]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainCamera/ViewportTextureRect/Area2D"]
 shape = SubResource("RectangleShape2D_t4peg")
