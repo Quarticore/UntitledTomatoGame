@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://assets/scripts/pause.gd" id="1_3bpvp"]
 [ext_resource type="Script" path="res://assets/scripts/selection_manager.gd" id="1_l4jld"]
-[ext_resource type="PackedScene" uid="uid://rf7wiy4b21xh" path="res://scenes/member.tscn" id="2_ak1xx"]
+[ext_resource type="PackedScene" path="res://scenes/member.tscn" id="2_ak1xx"]
 [ext_resource type="PackedScene" uid="uid://cpp7ddhx8pqcf" path="res://scenes/audio_manager.tscn" id="3_m7yqh"]
 [ext_resource type="PackedScene" uid="uid://d2q3qtuygsylc" path="res://scenes/beat_indicator.tscn" id="4_xrbsb"]
 [ext_resource type="Script" path="res://assets/scripts/gameplay_ui.gd" id="5_03y6y"]
@@ -76,12 +76,12 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="GameViewport" type="SubViewport" parent="GameContainer"]
-unique_name_in_owner = true
 disable_3d = true
 transparent_bg = true
 handle_input_locally = false
 physics_object_picking = true
 size = Vector2i(1920, 1080)
+render_target_update_mode = 4
 
 [node name="SelectionManager" type="Node" parent="GameContainer/GameViewport"]
 script = ExtResource("1_l4jld")
