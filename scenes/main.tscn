@@ -100,11 +100,11 @@ position = Vector2(960, 544)
 script = ExtResource("4_k61ne")
 
 [node name="ViewportTextureRect" type="Sprite2D" parent="MainCamera"]
-visible = false
 texture = SubResource("ViewportTexture_4737g")
 script = ExtResource("5_frg55")
 
 [node name="Area2D" type="Area2D" parent="MainCamera/ViewportTextureRect"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainCamera/ViewportTextureRect/Area2D"]
 shape = SubResource("RectangleShape2D_t4peg")
