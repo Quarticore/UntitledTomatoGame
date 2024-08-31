@@ -30,5 +30,5 @@ func _process(delta: float) -> void:
 
 func spawn_at_point(instance: TOMATO, point: Node2D) -> void:
 	add_child(instance)
-	instance.position = point.position
+	instance.start_pos = point.position
 	instance.target = crosshair.position
