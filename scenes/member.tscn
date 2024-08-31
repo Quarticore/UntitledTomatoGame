@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://rf7wiy4b21xh"]
+
+[ext_resource type="Script" path="res://assets/scripts/member.gd" id="1_77kid"]
+
+[sub_resource type="Gradient" id="Gradient_l2tc0"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vc4v7"]
+gradient = SubResource("Gradient_l2tc0")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s1pk8"]
+size = Vector2(114, 202)
+
+[node name="Member" type="Node2D"]
+script = ExtResource("1_77kid")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(48, 92)
+scale = Vector2(1.5, 2.875)
+texture = SubResource("GradientTexture2D_vc4v7")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Collider" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(47, 91)
+shape = SubResource("RectangleShape2D_s1pk8")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
