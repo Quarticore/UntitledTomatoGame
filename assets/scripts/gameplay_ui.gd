@@ -1,9 +1,9 @@
 extends Node
 
-func show():
+func play_show():
 	$AnimationPlayer.play("fade_in")
 
-func hide():
+func play_hide():
 	$AnimationPlayer.play("fade_out")
 
 func _on_audio_manager_rhythm_input(pct, combo, input) -> void:
