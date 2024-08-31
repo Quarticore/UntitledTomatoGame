@@ -3,13 +3,14 @@ extends Node
 @onready var Player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var Output: Label = $Output
 @onready var Accuracy: Label = $Accuracy
-var input_within = 0.3
-var input_offset = -0.3
+var input_within = 0.2
+var input_offset = -0.4
 var bpm = 125.0
 var bps = bpm / 60
 var offset = 0.2
 var last_beat_elapsed = 0.0
 var paused_at = 0.0
+var combo = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -37,6 +38,7 @@ func _process(delta: float) -> void:
 	
 	# Round to whole number, see if different
 	if round(beats_elapsed) != round(last_beat_elapsed):
+		emit_signal("new_beat", beats_elapsed)
 		push_o_on_beat()
 	
 	last_beat_elapsed = beats_elapsed
@@ -54,8 +56,16 @@ func check_input(beats_elapsed):
 		# We hit! Show accuracy
 		var complement = input_within - difference
 		var as_percentage = (complement / input_within) * 100
-		Accuracy.text = str(as_percentage) + "%"
+		Accuracy.text = str(as_percentage) + "%\ncombo: " + str(combo)
 		
+		combo += 1
+		emit_signal("rhythm_input", as_percentage, combo)
+		return
+	
+	Accuracy.text = "0%\ncombo: 0"
+	
+	combo = 0
+	emit_signal("rhythm_input", 0.0, combo)
 
 func push_o_on_beat():
 	Output.text = Output.text + "O"
