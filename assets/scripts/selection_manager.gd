@@ -1,10 +1,10 @@
 extends Node
 
-@onready var Light: Sprite2D = get_tree().root.get_node("Main/Light")
-@onready var Member1: Node2D = get_tree().root.get_node("Main/Member")
-@onready var Member2: Node2D = get_tree().root.get_node("Main/Member2")
-@onready var Member3: Node2D = get_tree().root.get_node("Main/Member3")
-@onready var Camera: Camera2D = get_tree().root.get_node("Main/MainCamera")
+@onready var Light: Sprite2D = get_node("/root/Main/Light")
+@onready var Member1: Node2D = get_node("/root/Main/Member")
+@onready var Member2: Node2D = get_node("/root/Main/Member2")
+@onready var Member3: Node2D = get_node("/root/Main/Member3")
+@onready var Camera: Camera2D = get_node("/root/Main/MainCamera")
 
 func _on_member_hovered() -> void:
 	Light.global_position.x = Member1.global_position.x
