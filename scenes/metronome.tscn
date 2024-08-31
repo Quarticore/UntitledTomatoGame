@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://btqkv1bhd1qyy"]
 
 [ext_resource type="Script" path="res://assets/scripts/metronome.gd" id="1_kadwb"]
-[ext_resource type="AudioStream" uid="uid://0djf1vx32sdb" path="res://audio/Macrolisk_LOOP_ALL.mp3" id="2_65n5g"]
+[ext_resource type="AudioStream" uid="uid://0djf1vx32sdb" path="res://assets/audio/Macrolisk_LOOP_ALL.mp3" id="2_51uqf"]
 
 [node name="Metronome" type="Node2D"]
 script = ExtResource("1_kadwb")
@@ -11,8 +11,9 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_65n5g")
+stream = ExtResource("2_51uqf")
 volume_db = -8.398
+autoplay = true
 
 [node name="Accuracy" type="Label" parent="."]
 offset_left = 24.0
