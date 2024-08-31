@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://de4vrd6yr3nho"]
+[gd_scene load_steps=7 format=3 uid="uid://de4vrd6yr3nho"]
 
 [ext_resource type="Script" path="res://assets/scripts/selection_manager.gd" id="1_l4jld"]
-[ext_resource type="PackedScene" uid="uid://rf7wiy4b21xh" path="res://scenes/member.tscn" id="2_ak1xx"]
+[ext_resource type="PackedScene" path="res://scenes/member.tscn" id="2_ak1xx"]
 [ext_resource type="PackedScene" uid="uid://cpp7ddhx8pqcf" path="res://scenes/audio_manager.tscn" id="3_m7yqh"]
+[ext_resource type="PackedScene" uid="uid://drvcf7ngfwjb1" path="res://scenes/beat_indicator.tscn" id="4_xrbsb"]
 
 [sub_resource type="Gradient" id="Gradient_w5xsi"]
 
@@ -31,6 +32,9 @@ texture = SubResource("GradientTexture2D_1rt5t")
 position = Vector2(960, 544)
 
 [node name="AudioManager" parent="." instance=ExtResource("3_m7yqh")]
+
+[node name="BeatIndicator" parent="." node_paths=PackedStringArray("audio_manager") instance=ExtResource("4_xrbsb")]
+audio_manager = NodePath("../AudioManager")
 
 [connection signal="hovered" from="Member" to="SelectionManager" method="_on_member_hovered"]
 [connection signal="selected" from="Member" to="SelectionManager" method="_on_member_selected"]
