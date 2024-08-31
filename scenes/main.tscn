@@ -1,12 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://de4vrd6yr3nho"]
+[gd_scene load_steps=18 format=3 uid="uid://de4vrd6yr3nho"]
 
 [ext_resource type="Script" path="res://assets/scripts/pause.gd" id="1_3bpvp"]
 [ext_resource type="Script" path="res://assets/scripts/selection_manager.gd" id="1_l4jld"]
-[ext_resource type="PackedScene" path="res://scenes/member.tscn" id="2_ak1xx"]
+[ext_resource type="PackedScene" uid="uid://rf7wiy4b21xh" path="res://scenes/member.tscn" id="2_ak1xx"]
 [ext_resource type="PackedScene" uid="uid://cpp7ddhx8pqcf" path="res://scenes/audio_manager.tscn" id="3_m7yqh"]
 [ext_resource type="Script" path="res://assets/scripts/camera_scale.gd" id="4_k61ne"]
 [ext_resource type="PackedScene" uid="uid://d2q3qtuygsylc" path="res://scenes/beat_indicator.tscn" id="4_xrbsb"]
 [ext_resource type="Script" path="res://assets/scripts/gameplay_ui.gd" id="5_03y6y"]
+[ext_resource type="Script" path="res://assets/scripts/viewport_display_input_forwarder.gd" id="5_frg55"]
 
 [sub_resource type="Gradient" id="Gradient_w5xsi"]
 
@@ -15,6 +16,9 @@ gradient = SubResource("Gradient_w5xsi")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_4737g"]
 viewport_path = NodePath("UIViewport")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4peg"]
+size = Vector2(1920, 1080)
 
 [sub_resource type="Animation" id="Animation_3c3il"]
 length = 0.001
@@ -96,7 +100,15 @@ position = Vector2(960, 544)
 script = ExtResource("4_k61ne")
 
 [node name="ViewportTextureRect" type="Sprite2D" parent="MainCamera"]
+visible = false
 texture = SubResource("ViewportTexture_4737g")
+script = ExtResource("5_frg55")
+
+[node name="Area2D" type="Area2D" parent="MainCamera/ViewportTextureRect"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainCamera/ViewportTextureRect/Area2D"]
+shape = SubResource("RectangleShape2D_t4peg")
+debug_color = Color(0, 0.6, 0.701961, 0.0352941)
 
 [node name="AudioManager" parent="." instance=ExtResource("3_m7yqh")]
 
@@ -133,4 +145,5 @@ label_settings = SubResource("LabelSettings_5fu4v")
 [connection signal="selected" from="Member2" to="SelectionManager" method="_on_member_2_selected"]
 [connection signal="hovered" from="Member3" to="SelectionManager" method="_on_member_3_hovered"]
 [connection signal="selected" from="Member3" to="SelectionManager" method="_on_member_3_selected"]
+[connection signal="input_event" from="MainCamera/ViewportTextureRect/Area2D" to="MainCamera/ViewportTextureRect" method="_on_area_2d_input_event"]
 [connection signal="rhythm_input" from="AudioManager" to="UIViewport/GameplayUI" method="_on_audio_manager_rhythm_input"]
