@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="GameSettings" load_steps=2 format=3 uid="uid://da1xoovnv3iao"]
+
+[ext_resource type="Script" path="res://assets/scripts/game_settings.gd" id="1_62lir"]
+
+[resource]
+script = ExtResource("1_62lir")
+volume = 0.5

@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7ce6hocruwgl"]
+
+[ext_resource type="Script" path="res://assets/scripts/options_menu.gd" id="1_x5gyv"]
+[ext_resource type="Resource" uid="uid://da1xoovnv3iao" path="res://resources/settings_profile.tres" id="2_e2sog"]
+[ext_resource type="LabelSettings" uid="uid://bgaxbsww5mxqt" path="res://resources/label_settings/option_labels.tres" id="2_p2n3p"]
+[ext_resource type="LabelSettings" uid="uid://6ollg0b4gj7y" path="res://resources/label_settings/option_values.tres" id="3_o0lpl"]
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x5gyv")
+settings = ExtResource("2_e2sog")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "BACK"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -23.5
+offset_right = 480.0
+offset_bottom = 23.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(480, 0)
+columns = 3
+
+[node name="VolumeLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Volume:"
+label_settings = ExtResource("2_p2n3p")
+
+[node name="VolumeSlider" type="HSlider" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="VolumeValue" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "0.50"
+label_settings = ExtResource("3_o0lpl")
+
+[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="value_changed" from="GridContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
