@@ -7,8 +7,8 @@ extends Node
 @onready var Camera: Camera2D = get_node("/root/Main/MainCamera")
 
 func on_select_any():
-	var gameplay_ui = get_node("/root/Main/GameplayUI")
-	# gameplay_ui.play_show()
+	var gameplay_ui = get_node("/root/Main/UIViewport/GameplayUI")
+	gameplay_ui.play_show()
 
 func _on_member_hovered() -> void:
 	Light.global_position.x = Member1.global_position.x
