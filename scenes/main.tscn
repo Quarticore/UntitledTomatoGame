@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://de4vrd6yr3nho"]
+
+[ext_resource type="Script" path="res://assets/scripts/selection_manager.gd" id="1_l4jld"]
+[ext_resource type="PackedScene" uid="uid://rf7wiy4b21xh" path="res://scenes/member.tscn" id="2_ak1xx"]
+
+[sub_resource type="Gradient" id="Gradient_w5xsi"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1rt5t"]
+gradient = SubResource("Gradient_w5xsi")
+
+[node name="Main" type="Node2D"]
+
+[node name="SelectionManager" type="Node" parent="."]
+script = ExtResource("1_l4jld")
+
+[node name="Member" parent="." instance=ExtResource("2_ak1xx")]
+position = Vector2(480, 472)
+
+[node name="Member2" parent="." instance=ExtResource("2_ak1xx")]
+position = Vector2(912, 520)
+
+[node name="Member3" parent="." instance=ExtResource("2_ak1xx")]
+position = Vector2(1368, 488)
+
+[node name="Light" type="Sprite2D" parent="."]
+position = Vector2(944, 160)
+texture = SubResource("GradientTexture2D_1rt5t")
+
+[node name="MainCamera" type="Camera2D" parent="."]
+position = Vector2(960, 544)
+
+[connection signal="hovered" from="Member" to="SelectionManager" method="_on_member_hovered"]
+[connection signal="selected" from="Member" to="SelectionManager" method="_on_member_selected"]
+[connection signal="hovered" from="Member2" to="SelectionManager" method="_on_member_2_hovered"]
+[connection signal="selected" from="Member2" to="SelectionManager" method="_on_member_2_selected"]
+[connection signal="hovered" from="Member3" to="SelectionManager" method="_on_member_3_hovered"]
+[connection signal="selected" from="Member3" to="SelectionManager" method="_on_member_3_selected"]
