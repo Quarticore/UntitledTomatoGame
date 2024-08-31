@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhw0g4gxve38e"]
+[gd_scene load_steps=4 format=3 uid="uid://dacmxtdv8rle"]
 
+[ext_resource type="Script" path="res://assets/scripts/main_menu.gd" id="1_2c87o"]
 [ext_resource type="Texture2D" uid="uid://85v4gkk8mnd8" path="res://assets/images/menu_play.png" id="1_6lia3"]
-[ext_resource type="Script" path="res://main_menu.gd" id="1_r5wom"]
+[ext_resource type="Texture2D" uid="uid://bagk3o2dev3p0" path="res://assets/images/menu_options.png" id="3_k6och"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -10,23 +11,35 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_r5wom")
+script = ExtResource("1_2c87o")
 
-[node name="PlayButton" type="TextureButton" parent="."]
-texture_filter = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -64.0
-offset_right = 128.0
-offset_bottom = 64.0
+offset_left = -64.0
+offset_top = -66.0
+offset_right = 64.0
+offset_bottom = 66.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(64, 64)
+
+[node name="PlayButton" type="TextureButton" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
 texture_normal = ExtResource("1_6lia3")
 stretch_mode = 5
 
-[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[node name="OptionsButton" type="TextureButton" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("3_k6och")
+stretch_mode = 5
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
