@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Macrolisk_HALFINTRO_ALL.mp3-1900a129d6c2becd6
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=125.0
 beat_count=0
 bar_beats=4
