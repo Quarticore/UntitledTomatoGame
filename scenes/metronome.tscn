@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://btqkv1bhd1qyy"]
+[gd_scene load_steps=3 format=3 uid="uid://dj6qxt506ggwa"]
 
 [ext_resource type="Script" path="res://assets/scripts/metronome.gd" id="1_kadwb"]
 [ext_resource type="AudioStream" uid="uid://0djf1vx32sdb" path="res://assets/audio/Macrolisk_LOOP_ALL.mp3" id="2_51uqf"]

@@ -1,7 +1,10 @@
 extends Node
 
-@onready var Player: AudioStreamPlayer = $AudioStreamPlayer
-@onready var Accuracy: Label = $Accuracy
+signal new_beat
+signal rhythm_input
+signal combo_break
+
+@onready var Player: AudioStreamPlayer = $Player
 var input_within = 0.2
 var input_offset = -0.4
 var bpm = 125.0
@@ -25,7 +28,7 @@ func _process(delta: float) -> void:
 	
 	# Round to whole number, see if different
 	if round(beats_elapsed) != round(last_beat_elapsed):
-		emit_signal("new_beat", beats_elapsed)
+		new_beat.emit(beats_elapsed)
 	
 	last_beat_elapsed = beats_elapsed
 	
@@ -51,14 +54,11 @@ func check_input(beats_elapsed):
 		# We hit! Show accuracy
 		var complement = input_within - difference
 		var as_percentage = (complement / input_within) * 100
-		Accuracy.text = str(as_percentage) + "%\ncombo: " + str(combo)
 		
 		combo += 1
-		emit_signal("rhythm_input", as_percentage, combo, input)
+		rhythm_input.emit(as_percentage, combo, input)
 		return
 	
-	Accuracy.text = "0%\ncombo: 0"
-	
 	combo = 0
-	emit_signal("rhythm_input", 0.0, combo, input)
-	emit_signal("combo_break")
+	rhythm_input.emit(0.0, combo, input)
+	combo_break.emit()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://de4vrd6yr3nho"]
+[gd_scene load_steps=6 format=3 uid="uid://de4vrd6yr3nho"]
 
 [ext_resource type="Script" path="res://assets/scripts/selection_manager.gd" id="1_l4jld"]
 [ext_resource type="PackedScene" uid="uid://rf7wiy4b21xh" path="res://scenes/member.tscn" id="2_ak1xx"]
+[ext_resource type="PackedScene" uid="uid://cpp7ddhx8pqcf" path="res://scenes/audio_manager.tscn" id="3_m7yqh"]
 
 [sub_resource type="Gradient" id="Gradient_w5xsi"]
 
@@ -28,6 +29,8 @@ texture = SubResource("GradientTexture2D_1rt5t")
 
 [node name="MainCamera" type="Camera2D" parent="."]
 position = Vector2(960, 544)
+
+[node name="AudioManager" parent="." instance=ExtResource("3_m7yqh")]
 
 [connection signal="hovered" from="Member" to="SelectionManager" method="_on_member_hovered"]
 [connection signal="selected" from="Member" to="SelectionManager" method="_on_member_selected"]
