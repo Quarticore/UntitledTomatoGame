@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://de4vrd6yr3nho"]
+[gd_scene load_steps=7 format=3 uid="uid://de4vrd6yr3nho"]
 
+[ext_resource type="Script" path="res://assets/scripts/pause.gd" id="1_3bpvp"]
 [ext_resource type="Script" path="res://assets/scripts/selection_manager.gd" id="1_l4jld"]
 [ext_resource type="PackedScene" uid="uid://rf7wiy4b21xh" path="res://scenes/member.tscn" id="2_ak1xx"]
 [ext_resource type="PackedScene" uid="uid://cpp7ddhx8pqcf" path="res://scenes/audio_manager.tscn" id="3_m7yqh"]
@@ -10,6 +11,7 @@
 gradient = SubResource("Gradient_w5xsi")
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_3bpvp")
 
 [node name="SelectionManager" type="Node" parent="."]
 script = ExtResource("1_l4jld")

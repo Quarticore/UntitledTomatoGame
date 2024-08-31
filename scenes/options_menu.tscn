@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7ce6hocruwgl"]
+[gd_scene load_steps=5 format=3 uid="uid://bof4wvv62y0br"]
 
 [ext_resource type="Script" path="res://assets/scripts/options_menu.gd" id="1_x5gyv"]
 [ext_resource type="Resource" uid="uid://da1xoovnv3iao" path="res://resources/settings_profile.tres" id="2_e2sog"]
