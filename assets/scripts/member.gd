@@ -40,7 +40,7 @@ func set_b_position(new_idx):
 	position_idx = new_idx
 	label.text = "Position: " + str(position_idx)
 	
-	if pos_sprites.size() - 1 <= position_idx:
+	if pos_sprites.size() - 1 >= position_idx:
 		$Sprite.texture = pos_sprites[position_idx]
 
 func on_new_beat(elapsed):
