@@ -6,6 +6,12 @@ const HIT_GREAT = preload("res://assets/images/input_great.png")
 const HIT_OKAY = preload("res://assets/images/input_okay.png")
 const HIT_MISS = preload("res://assets/images/input_terrible.png")
 
+@onready var game_manager: GameManager = get_node("/root/GameManager")
+
+func _process(delta):
+	var pct = game_manager.pct_left
+	$TEST_PercentLabel.text = str(pct) + "%"
+
 func play_show():
 	$AnimationPlayer.play("fade_in")
 

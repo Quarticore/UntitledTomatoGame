@@ -8,6 +8,7 @@ const METRONOME: Script = preload("res://assets/scripts/metronome.gd")
 
 @export var audio_manager: METRONOME
 
+@onready var game_manager: GameManager = get_node("/root/GameManager")
 @onready var left_spawn: Path2D = $TomatoSpawnLeft
 @onready var middle_spawn: Path2D = $TomatoSpawnMiddle
 @onready var right_spawn: Path2D = $TomatoSpawnRight
@@ -33,3 +34,5 @@ func parse_input(percentage: float, combo: int, input: int) -> void:
 			spawn_at_path(TOMATO_SCENE.instantiate(), middle_spawn)
 		2:
 			spawn_at_path(TOMATO_SCENE.instantiate(), right_spawn)
+			
+	game_manager.successful_hit(input)
