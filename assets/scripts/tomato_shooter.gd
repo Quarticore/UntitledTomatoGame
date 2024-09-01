@@ -12,7 +12,6 @@ const METRONOME: Script = preload("res://assets/scripts/metronome.gd")
 @onready var left_spawn: Path2D = $TomatoSpawnLeft
 @onready var middle_spawn: Path2D = $TomatoSpawnMiddle
 @onready var right_spawn: Path2D = $TomatoSpawnRight
-@onready var crosshair: Sprite2D = $Crosshair
 
 
 func _ready() -> void:
