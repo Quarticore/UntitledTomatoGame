@@ -17,6 +17,9 @@ func play_show():
 
 func play_hide():
 	$AnimationPlayer.play("fade_out")
+	
+func play_double_time():
+	$DoubleTime/AnimationPlayer.play("show")
 
 func _on_audio_manager_rhythm_input(pct, combo, input) -> void:
 	var hit_asset

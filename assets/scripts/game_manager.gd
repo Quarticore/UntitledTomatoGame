@@ -41,6 +41,8 @@ func trigger_double_time():
 	audio_manager.input_within = 0.2
 	audio_manager.input_offset = -0.4
 	
+	gameplay_ui.play_double_time()
+	
 	in_double_time = true
 	
 func exit_double_time():
