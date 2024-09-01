@@ -1,8 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmxar4fc4m40v"]
-
-[ext_resource type="PackedScene" uid="uid://cswvepkr1um18" path="res://scenes/tomato_shooter.tscn" id="1_scvc2"]
+[gd_scene format=3 uid="uid://bmxar4fc4m40v"]
 
 [node name="Testing" type="Node2D"]
 position = Vector2(960, 540)
-
-[node name="TomatoShooter" parent="." instance=ExtResource("1_scvc2")]
