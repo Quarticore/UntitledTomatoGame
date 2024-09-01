@@ -196,6 +196,7 @@ _data = {
 [node name="Crowd" type="Node2D"]
 
 [node name="Crowd4" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(136, 840)
 scale = Vector2(1.31667, 1.68)
 texture = ExtResource("1_u04ay")
@@ -207,6 +208,7 @@ libraries = {
 autoplay = "bounce4"
 
 [node name="Crowd5" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(1960, 816)
 scale = Vector2(1.45833, 1.62)
 texture = ExtResource("1_u04ay")
@@ -218,6 +220,7 @@ libraries = {
 autoplay = "bounce5"
 
 [node name="Crowd1" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(1024, 816)
 scale = Vector2(1.425, 1.74)
 texture = ExtResource("1_u04ay")
@@ -229,6 +232,7 @@ libraries = {
 autoplay = "bounce"
 
 [node name="Crowd2" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(200, 968)
 rotation = 0.242601
 scale = Vector2(0.460547, 0.470188)
@@ -241,6 +245,7 @@ libraries = {
 autoplay = "bounce2"
 
 [node name="Crowd3" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(1704, 920)
 rotation = -0.0802851
 scale = Vector2(0.508333, 0.564516)

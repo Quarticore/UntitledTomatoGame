@@ -1,10 +1,10 @@
 extends Node
 
 const HIT_QUALITY_ITEM = preload("res://scenes/hit_quality_item.tscn")
-const HIT_PERFECT = preload("res://assets/images/input_perfect.png")
-const HIT_GREAT = preload("res://assets/images/input_great.png")
-const HIT_OKAY = preload("res://assets/images/input_okay.png")
-const HIT_MISS = preload("res://assets/images/input_miss.png")
+const HIT_PERFECT = preload("res://assets/images/input_perfect_px.png")
+const HIT_GREAT = preload("res://assets/images/input_great_px.png")
+const HIT_OKAY = preload("res://assets/images/input_okay_px.png")
+const HIT_MISS = preload("res://assets/images/input_miss_px.png")
 
 @onready var game_manager: GameManager = get_node("/root/GameManager")
 
