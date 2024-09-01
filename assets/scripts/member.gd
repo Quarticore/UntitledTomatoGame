@@ -6,7 +6,7 @@ signal selected
 @export var behaviour: EnemyPattern
 @onready var audio_manager: Node = $"../AudioManager"
 @onready var game_manager: GameManager = get_node("/root/GameManager")
-@onready var beats_until_change = behaviour.maybe_change_every_x_beats
+@onready var beats_until_change = behaviour.maybe_change_every_x_beats - 1
 
 ## TODO REMOVE
 @onready var label: Label = $TEST_Position
@@ -43,11 +43,10 @@ func on_new_beat(elapsed):
 		print("not changing yet")
 		return
 	else:
-		beats_until_change = behaviour.maybe_change_every_x_beats
-	
-	var n = 1 / behaviour.chance_to_change
+		beats_until_change = behaviour.maybe_change_every_x_beats - 1
+
 	var rng = RandomNumberGenerator.new()
-	var will_change = rng.randi_range(1, n) == 1
+	var will_change = rng.randi_range(1, behaviour.chance_to_change) == 1
 	
 	if !will_change:
 		return
