@@ -32,7 +32,7 @@ func trigger_double_time():
 	var audio_manager: AudioManager = get_node("/root/Main/GameContainer/GameViewport/AudioManager")
 	audio_manager.recalculate(audio_manager.bpm * 2)
 	audio_manager.input_within = 0.2
-	audio_manager.input_offset = -0.35
+	audio_manager.input_offset = -0.4
 	
 	in_double_time = true
 	
