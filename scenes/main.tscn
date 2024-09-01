@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://de4vrd6yr3nho"]
+[gd_scene load_steps=27 format=3 uid="uid://de4vrd6yr3nho"]
 
 [ext_resource type="Script" path="res://assets/scripts/pause.gd" id="1_3bpvp"]
 [ext_resource type="Script" path="res://assets/scripts/selection_manager.gd" id="1_l4jld"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://btk7vlupffffw" path="res://scenes/crowd.tscn" id="6_8qqgb"]
 [ext_resource type="Texture2D" uid="uid://cq7526a1feqeg" path="res://assets/images/test_2.png" id="6_sw0xo"]
 [ext_resource type="Texture2D" uid="uid://cxa4jaqlo53gu" path="res://assets/images/test_3.png" id="7_oerax"]
+[ext_resource type="Texture2D" uid="uid://b6ek3ok0h6wn6" path="res://assets/images/test_dead.png" id="8_pmdbd"]
 [ext_resource type="FontFile" uid="uid://dml0vyi4v35ld" path="res://assets/font/DeadeldermetalRegular.otf" id="8_whrdu"]
 
 [sub_resource type="Resource" id="Resource_yb7fm"]
@@ -155,26 +156,22 @@ script = ExtResource("1_l4jld")
 position = Vector2(480, 472)
 behaviour = SubResource("Resource_yb7fm")
 pos_sprites = Array[Texture2D]([ExtResource("5_psvlr"), ExtResource("6_sw0xo"), ExtResource("7_oerax")])
+defeat_sprite = ExtResource("8_pmdbd")
 
 [node name="Sprite" parent="GameContainer/GameViewport/Member1" index="1"]
-scale = Vector2(1, 1)
 texture = ExtResource("5_sggue")
 
 [node name="Member2" parent="GameContainer/GameViewport" instance=ExtResource("2_ak1xx")]
 position = Vector2(912, 520)
 behaviour = SubResource("Resource_yb2n4")
 pos_sprites = Array[Texture2D]([ExtResource("5_psvlr"), ExtResource("6_sw0xo"), ExtResource("7_oerax")])
-
-[node name="Sprite" parent="GameContainer/GameViewport/Member2" index="1"]
-scale = Vector2(1, 1)
+defeat_sprite = ExtResource("8_pmdbd")
 
 [node name="Member3" parent="GameContainer/GameViewport" instance=ExtResource("2_ak1xx")]
 position = Vector2(1368, 488)
 behaviour = SubResource("Resource_exxfo")
 pos_sprites = Array[Texture2D]([ExtResource("5_psvlr"), ExtResource("6_sw0xo"), ExtResource("7_oerax")])
-
-[node name="Sprite" parent="GameContainer/GameViewport/Member3" index="1"]
-scale = Vector2(1, 1)
+defeat_sprite = ExtResource("8_pmdbd")
 
 [node name="MainCamera" type="Camera2D" parent="GameContainer/GameViewport"]
 position = Vector2(960, 544)

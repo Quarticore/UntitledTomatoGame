@@ -52,11 +52,16 @@ func move_camera_back():
 	var pos_y = 544
 	var camera: Camera2D = get_node("/root/Main/GameContainer/GameViewport/MainCamera")
 	var defeat_label = get_node("/root/Main/DefeatLabel/AnimationPlayer")
+	var member = get_node("/root/Main/GameContainer/GameViewport/" + in_battle_with)
 	
 	camera.zoom = Vector2(1, 1)
 	camera.position = Vector2(pos_x, pos_y)
 	
 	defeat_label.play("fade_in")
+	
+	if member.defeat_sprite != null:
+		var sprite = get_node("/root/Main/GameContainer/GameViewport/" + in_battle_with + "/Sprite")
+		sprite.texture = member.defeat_sprite
 
 func successful_hit(input):
 	if !in_battle:

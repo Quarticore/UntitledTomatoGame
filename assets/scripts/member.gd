@@ -5,6 +5,7 @@ signal selected
 
 @export var behaviour: EnemyPattern
 @export var pos_sprites: Array[Texture2D] = []
+@export var defeat_sprite: Texture2D
 @onready var audio_manager: Node = $"../AudioManager"
 @onready var game_manager: GameManager = get_node("/root/GameManager")
 @onready var beats_until_change = behaviour.maybe_change_every_x_beats - 1
