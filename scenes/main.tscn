@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cpp7ddhx8pqcf" path="res://scenes/audio_manager.tscn" id="3_m7yqh"]
 [ext_resource type="Script" path="res://assets/scripts/enemy_pattern.gd" id="4_wvsy8"]
 [ext_resource type="PackedScene" uid="uid://d2q3qtuygsylc" path="res://scenes/beat_indicator.tscn" id="4_xrbsb"]
-[ext_resource type="PackedScene" path="res://scenes/tomato_shooter.tscn" id="5_2ftpm"]
+[ext_resource type="PackedScene" uid="uid://3m3uubicpp45" path="res://scenes/tomato_shooter.tscn" id="5_2ftpm"]
 [ext_resource type="Script" path="res://assets/scripts/gameplay_ui.gd" id="5_03y6y"]
 [ext_resource type="PackedScene" uid="uid://btk7vlupffffw" path="res://scenes/crowd.tscn" id="6_8qqgb"]
 

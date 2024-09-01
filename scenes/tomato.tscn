@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dog8o4858ere7"]
+[gd_scene load_steps=3 format=3 uid="uid://xafq334vhpnr"]
 
 [ext_resource type="Texture2D" uid="uid://dw1ioinuvrl4v" path="res://assets/images/tomato.png" id="2_p2j80"]
 [ext_resource type="Script" path="res://assets/scripts/tomato.gd" id="2_r1ndb"]
@@ -14,6 +14,7 @@ texture = ExtResource("2_p2j80")
 one_shot = true
 
 [node name="TravelTimer" type="Timer" parent="."]
+wait_time = 0.3
 one_shot = true
 autostart = true
 
