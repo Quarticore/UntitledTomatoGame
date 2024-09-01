@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dy13hv0y0bp70"]
+[gd_scene load_steps=3 format=3 uid="uid://dy13hv0y0bp70"]
 
 [ext_resource type="Script" path="res://assets/scripts/credits_menu.gd" id="1_m2tlc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lhtc1"]
+font_size = 24
 
 [node name="CreditsMenu" type="Control"]
 layout_mode = 3
@@ -37,5 +40,21 @@ grow_vertical = 2
 [node name="BackButton" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 text = "BACK"
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Made for the Mini Jame Gam hosted by tiimo, AmiableVegetable, mantis roja, AcidBurritos
+
+Theme: Failure
+Special Object: Tomato
+
+Game created by SpikeHD, Mazure3D, and ***
+
+==========
+Assets Used
+==========
+Song: Macrolisk by Burn7 https://www.newgrounds.com/audio/listen/1293163"
+label_settings = SubResource("LabelSettings_lhtc1")
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Panel/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
