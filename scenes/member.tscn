@@ -104,6 +104,7 @@ _data = {
 script = ExtResource("1_77kid")
 
 [node name="StageLight" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(64, -7.99998)
 scale = Vector2(0.476, 0.412)
 texture = ExtResource("2_2jr1t")
