@@ -6,6 +6,7 @@ var options: PackedScene = load("res://scenes/options_menu.tscn")
 
 
 func _on_play_button_pressed() -> void:
+	get_tree().paused = false
 	queue_free()
 
 
