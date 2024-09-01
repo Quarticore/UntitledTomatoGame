@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://de4vrd6yr3nho"]
+[gd_scene load_steps=39 format=3 uid="uid://de4vrd6yr3nho"]
 
 [ext_resource type="Script" path="res://assets/scripts/pause.gd" id="1_3bpvp"]
 [ext_resource type="Script" path="res://assets/scripts/selection_manager.gd" id="1_l4jld"]
@@ -22,14 +22,14 @@ script = ExtResource("4_wvsy8")
 chance_to_change = 1.0
 valid_positions = [Vector3(0, 1, 1), Vector3(1, 0, 1), Vector3(1, 1, 0)]
 maybe_change_every_x_beats = 3
-reduction_per_hit = 100.0
+reduction_per_hit = 5.0
 
 [sub_resource type="Resource" id="Resource_yb2n4"]
 script = ExtResource("4_wvsy8")
 chance_to_change = 2.0
 valid_positions = [Vector3(0, 1, 1), Vector3(1, 0, 1), Vector3(1, 1, 0)]
 maybe_change_every_x_beats = 1
-reduction_per_hit = 100.0
+reduction_per_hit = 3.5
 
 [sub_resource type="Resource" id="Resource_exxfo"]
 script = ExtResource("4_wvsy8")
@@ -73,6 +73,49 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_jk5q2"),
 "fade_in": SubResource("Animation_pjq5x")
+}
+
+[sub_resource type="Theme" id="Theme_qpf33"]
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/outline_size = 32
+RichTextLabel/font_sizes/normal_font_size = 72
+RichTextLabel/fonts/normal_font = ExtResource("17_t8j3o")
+
+[sub_resource type="Animation" id="Animation_0xam4"]
+resource_name = "fade_in"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667, 2.9, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sx7cq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cyb4x"]
+_data = {
+"RESET": SubResource("Animation_sx7cq"),
+"fade_in": SubResource("Animation_0xam4")
 }
 
 [sub_resource type="Animation" id="Animation_3c3il"]
@@ -267,6 +310,25 @@ texture = ExtResource("13_t5d2o")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DefeatLabel"]
 libraries = {
 "": SubResource("AnimationLibrary_1x5x2")
+}
+
+[node name="WinLabel" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 264.0
+offset_top = 256.0
+offset_right = 1632.0
+offset_bottom = 688.0
+mouse_filter = 2
+theme = SubResource("Theme_qpf33")
+bbcode_enabled = true
+text = "
+[center][color=red]MAXIMUM HATER: ACHIEVED[/color]
+
+YOU WIN![/center]"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WinLabel"]
+libraries = {
+"": SubResource("AnimationLibrary_cyb4x")
 }
 
 [node name="GameplayUI" type="Node2D" parent="."]

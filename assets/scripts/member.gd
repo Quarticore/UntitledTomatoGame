@@ -10,9 +10,6 @@ signal selected
 @onready var game_manager: GameManager = get_node("/root/GameManager")
 @onready var beats_until_change = behaviour.maybe_change_every_x_beats - 1
 
-## TODO REMOVE
-@onready var label: Label = $TEST_Position
-
 var position_idx = 0
 var defeated = false
 
@@ -39,7 +36,6 @@ func get_b_position():
 	
 func set_b_position(new_idx):
 	position_idx = new_idx
-	label.text = "Position: " + str(position_idx)
 	
 	if pos_sprites.size() - 1 >= position_idx:
 		$Sprite.texture = pos_sprites[position_idx]

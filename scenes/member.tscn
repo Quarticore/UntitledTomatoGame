@@ -120,10 +120,6 @@ texture = SubResource("GradientTexture2D_vc4v7")
 position = Vector2(47, 91)
 shape = SubResource("RectangleShape2D_s1pk8")
 
-[node name="TEST_Position" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_l0awc")
