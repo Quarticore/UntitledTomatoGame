@@ -37,6 +37,9 @@ func _on_member_3_hovered() -> void:
 	Member1.hide_light()
 
 func _on_member_selected() -> void:
+	if Member1.defeated:
+		return
+	
 	Camera.zoom = Vector2(2, 2)
 	Camera.global_position = Member1.global_position
 	
@@ -45,6 +48,9 @@ func _on_member_selected() -> void:
 	on_select_any()
 
 func _on_member_2_selected() -> void:
+	if Member2.defeated:
+		return
+
 	Camera.zoom = Vector2(2, 2)
 	Camera.global_position = Member2.global_position
 	
@@ -53,6 +59,9 @@ func _on_member_2_selected() -> void:
 	on_select_any()
 
 func _on_member_3_selected() -> void:
+	if Member3.defeated:
+		return
+
 	Camera.zoom = Vector2(2, 2)
 	Camera.global_position = Member3.global_position
 	

@@ -1,5 +1,7 @@
 extends Node
 
+@onready var gameplay_ui = get_node("/root/Main/GameplayUI")
+
 var in_battle = false
 var in_battle_with = ""
 var pct_left = 100
@@ -13,8 +15,19 @@ func not_battling():
 	in_battle = false
 	in_battle_with = ""
 	pct_left = 0
+	
+func move_camera_back():
+	var pos_x = 960
+	var pos_y = 544
+	var camera: Camera2D = get_node("/root/Main/GameContainer/GameViewport/MainCamera")
+	
+	camera.zoom = Vector2(1, 1)
+	camera.position = Vector2(pos_x, pos_y)
 
 func successful_hit(input):
+	if !in_battle:
+		return
+	
 	var member: Member = get_node("/root/Main/GameContainer/GameViewport/" + in_battle_with)
 	var blocked
 	
@@ -37,5 +50,8 @@ func successful_hit(input):
 	
 	if pct_left <= 0:
 		member.defeated = true
+		move_camera_back()
+		gameplay_ui.play_hide()
+		not_battling()
 	
 	return true
