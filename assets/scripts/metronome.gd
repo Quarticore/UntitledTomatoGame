@@ -78,4 +78,4 @@ func check_input(beats_elapsed):
 
 
 func _on_settings_changed() -> void:
-	Player.volume_db = linear_to_db(settings.volume)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(settings.volume))
