@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://rf7wiy4b21xh"]
 
 [ext_resource type="Script" path="res://assets/scripts/member.gd" id="1_77kid"]
-[ext_resource type="Texture2D" uid="uid://dysefy3nlaljq" path="res://assets/images/stage_light.png" id="2_pige0"]
+[ext_resource type="Texture2D" uid="uid://cj1ljig7q4kde" path="res://assets/images/stage_light_px.png" id="2_2jr1t"]
 
 [sub_resource type="Gradient" id="Gradient_l2tc0"]
 
@@ -106,7 +106,7 @@ script = ExtResource("1_77kid")
 [node name="StageLight" type="Sprite2D" parent="."]
 position = Vector2(64, -7.99998)
 scale = Vector2(0.476, 0.412)
-texture = ExtResource("2_pige0")
+texture = ExtResource("2_2jr1t")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(48, 92)
