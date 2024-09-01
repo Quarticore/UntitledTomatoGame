@@ -21,10 +21,11 @@ func _on_audio_manager_rhythm_input(pct, combo, input) -> void:
 	
 	print(pct)
 	
+	var rng = RandomNumberGenerator.new()
+	
 	var inst = HIT_QUALITY_ITEM.instantiate()
 	inst.texture = HIT_PERFECT
-	inst.scale = Vector2(0.3, 0.3)
-	inst.rotation_degrees = 10.0
+	inst.scale = Vector2(0.5, 0.5)
+	inst.rotation_degrees = rng.randi_range(5, 10)
 	
 	$HitQualityContainer.add_child(inst)
-	
