@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://de4vrd6yr3nho"]
+[gd_scene load_steps=32 format=3 uid="uid://de4vrd6yr3nho"]
 
 [ext_resource type="Script" path="res://assets/scripts/pause.gd" id="1_3bpvp"]
 [ext_resource type="Script" path="res://assets/scripts/selection_manager.gd" id="1_l4jld"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cxa4jaqlo53gu" path="res://assets/images/test_3.png" id="7_oerax"]
 [ext_resource type="Texture2D" uid="uid://b6ek3ok0h6wn6" path="res://assets/images/test_dead.png" id="8_pmdbd"]
 [ext_resource type="Texture2D" uid="uid://cme3ljtqrgg5k" path="res://assets/images/band_member_defeated.png" id="13_t5d2o"]
+[ext_resource type="FontFile" uid="uid://dpx712asq6tsp" path="res://assets/font/FFFFORWA.TTF" id="17_t8j3o"]
 
 [sub_resource type="Resource" id="Resource_yb7fm"]
 script = ExtResource("4_wvsy8")
@@ -38,14 +39,7 @@ valid_positions = [Vector3(0, 0, 1), Vector3(0, 1, 0), Vector3(1, 0, 0)]
 maybe_change_every_x_beats = 2
 reduction_per_hit = 2.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_gmt1r"]
-font = ExtResource("8_whrdu")
-font_size = 128
-font_color = Color(0.821395, 0, 0.201257, 1)
-outline_size = 20
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Animation" id="Animation_ef6yt"]
+[sub_resource type="Animation" id="Animation_jk5q2"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -56,14 +50,13 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"times": PackedFloat32Array(0, 1.03333, 1.93333, 2.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_jk5q2"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_pjq5x"]
+resource_name = "fade_in"
+length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -71,7 +64,7 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 1.7, 2),
+"times": PackedFloat32Array(0, 1.03333, 1.93333, 2.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -136,12 +129,38 @@ _data = {
 "fade_out": SubResource("Animation_5n3vl")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lpafg"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8pqkh"]
+bg_color = Color(0, 0.724517, 0.230028, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="Theme" id="Theme_3fbbo"]
+ProgressBar/colors/font_color = Color(0.94902, 0.94902, 0.94902, 0)
+ProgressBar/styles/background = SubResource("StyleBoxFlat_lpafg")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_8pqkh")
+
+[sub_resource type="LabelSettings" id="LabelSettings_su6m6"]
+font = ExtResource("17_t8j3o")
+font_size = 24
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_3bpvp")
 
 [node name="GameContainer" type="SubViewportContainer" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
+metadata/_edit_use_anchors_ = true
 
 [node name="GameViewport" type="SubViewport" parent="GameContainer"]
 disable_3d = true
@@ -226,9 +245,22 @@ position = Vector2(957, 614)
 audio_manager = NodePath("../../GameContainer/GameViewport/AudioManager")
 
 [node name="HealthBar" type="ProgressBar" parent="GameplayUI"]
-offset_right = 495.0
-offset_bottom = 48.0
+offset_left = 704.0
+offset_top = 96.0
+offset_right = 1199.0
+offset_bottom = 144.0
+theme = SubResource("Theme_3fbbo")
 value = 100.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="GameplayUI/HealthBar"]
+layout_mode = 0
+offset_top = -30.0
+offset_right = 216.0
+offset_bottom = 4.0
+text = "Crowd Satisfaction"
+label_settings = SubResource("LabelSettings_su6m6")
 
 [connection signal="hovered" from="GameContainer/GameViewport/Member1" to="GameContainer/GameViewport/SelectionManager" method="_on_member_hovered"]
 [connection signal="selected" from="GameContainer/GameViewport/Member1" to="GameContainer/GameViewport/SelectionManager" method="_on_member_selected"]
