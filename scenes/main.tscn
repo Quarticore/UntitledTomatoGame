@@ -1,8 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://de4vrd6yr3nho"]
+[gd_scene load_steps=28 format=3 uid="uid://de4vrd6yr3nho"]
 
 [ext_resource type="Script" path="res://assets/scripts/pause.gd" id="1_3bpvp"]
 [ext_resource type="Script" path="res://assets/scripts/selection_manager.gd" id="1_l4jld"]
 [ext_resource type="PackedScene" uid="uid://rf7wiy4b21xh" path="res://scenes/member.tscn" id="2_ak1xx"]
+[ext_resource type="Texture2D" uid="uid://b14rgbknxbngm" path="res://assets/images/stage_background.png" id="3_dtaof"]
 [ext_resource type="PackedScene" uid="uid://cpp7ddhx8pqcf" path="res://scenes/audio_manager.tscn" id="3_m7yqh"]
 [ext_resource type="Script" path="res://assets/scripts/enemy_pattern.gd" id="4_wvsy8"]
 [ext_resource type="PackedScene" uid="uid://d2q3qtuygsylc" path="res://scenes/beat_indicator.tscn" id="4_xrbsb"]
@@ -152,8 +153,13 @@ render_target_update_mode = 4
 [node name="SelectionManager" type="Node" parent="GameContainer/GameViewport"]
 script = ExtResource("1_l4jld")
 
+[node name="Sprite2D" type="Sprite2D" parent="GameContainer/GameViewport"]
+position = Vector2(960, 540)
+scale = Vector2(4, 4)
+texture = ExtResource("3_dtaof")
+
 [node name="Member1" parent="GameContainer/GameViewport" instance=ExtResource("2_ak1xx")]
-position = Vector2(480, 472)
+position = Vector2(480, 340)
 behaviour = SubResource("Resource_yb7fm")
 pos_sprites = Array[Texture2D]([ExtResource("5_psvlr"), ExtResource("6_sw0xo"), ExtResource("7_oerax")])
 defeat_sprite = ExtResource("8_pmdbd")
@@ -162,13 +168,13 @@ defeat_sprite = ExtResource("8_pmdbd")
 texture = ExtResource("5_sggue")
 
 [node name="Member2" parent="GameContainer/GameViewport" instance=ExtResource("2_ak1xx")]
-position = Vector2(912, 520)
+position = Vector2(912, 480)
 behaviour = SubResource("Resource_yb2n4")
 pos_sprites = Array[Texture2D]([ExtResource("5_psvlr"), ExtResource("6_sw0xo"), ExtResource("7_oerax")])
 defeat_sprite = ExtResource("8_pmdbd")
 
 [node name="Member3" parent="GameContainer/GameViewport" instance=ExtResource("2_ak1xx")]
-position = Vector2(1368, 488)
+position = Vector2(1368, 360)
 behaviour = SubResource("Resource_exxfo")
 pos_sprites = Array[Texture2D]([ExtResource("5_psvlr"), ExtResource("6_sw0xo"), ExtResource("7_oerax")])
 defeat_sprite = ExtResource("8_pmdbd")
