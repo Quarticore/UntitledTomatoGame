@@ -14,18 +14,22 @@ const METRONOME: Script = preload("res://assets/scripts/metronome.gd")
 @onready var crosshair: Sprite2D = $Crosshair
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("InputLeft"):
-		spawn_at_path(TOMATO_SCENE.instantiate(), left_spawn)
-	
-	if Input.is_action_just_pressed("InputMiddle"):
-		spawn_at_path(TOMATO_SCENE.instantiate(), middle_spawn)
-	
-	if Input.is_action_just_pressed("InputRight"):
-		spawn_at_path(TOMATO_SCENE.instantiate(), right_spawn)
-
+func _ready() -> void:
+	audio_manager.rhythm_input.connect(parse_input)
 
 
 func spawn_at_path(instance: TOMATO, path: Path2D) -> void:
 	path.add_child(instance)
+
+
+func parse_input(percentage: float, combo: int, input: int) -> void:
+	if percentage == 0.0:
+		return
+	
+	match input:
+		0:
+			spawn_at_path(TOMATO_SCENE.instantiate(), left_spawn)
+		1:
+			spawn_at_path(TOMATO_SCENE.instantiate(), middle_spawn)
+		2:
+			spawn_at_path(TOMATO_SCENE.instantiate(), right_spawn)
