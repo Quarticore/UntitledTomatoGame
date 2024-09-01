@@ -4,6 +4,8 @@ signal new_beat
 signal rhythm_input
 signal combo_break
 
+const LOOP_TRACK = preload("res://assets/audio/Macrolisk_LOOP_ALL.mp3")
+
 @onready var Player: AudioStreamPlayer = $Player
 @onready var settings: GameSettings = preload("res://resources/settings_profile.tres")
 @export var beat_linear: float = 0.0
@@ -27,6 +29,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if !Player.playing:
+		do_switch_track()
 		return
 	
 	var beats_elapsed: float = (Player.get_playback_position() / (1 / bps)) + offset
@@ -83,3 +86,9 @@ func check_input(beats_elapsed):
 
 func _on_settings_changed() -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(settings.volume))
+
+func do_switch_track() -> void:
+	# Set the loop track
+	Player.stream = LOOP_TRACK
+	Player.play(0.0)
+	pass
