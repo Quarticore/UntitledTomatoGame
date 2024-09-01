@@ -1,0 +1,155 @@
+[gd_scene load_steps=12 format=3 uid="uid://btk7vlupffffw"]
+
+[ext_resource type="Texture2D" uid="uid://bam41mre2e6dg" path="res://assets/images/crowd1.png" id="1_u04ay"]
+[ext_resource type="Texture2D" uid="uid://dfaem3gkjjvjq" path="res://assets/images/crowd2.png" id="2_r7bau"]
+
+[sub_resource type="Animation" id="Animation_rkjo3"]
+resource_name = "bounce"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.266667, 0.666667, 0.733333, 0.933333),
+"transitions": PackedFloat32Array(1, 1.56917, 1, 1, 1.56917, 1),
+"update": 0,
+"values": [Vector2(1024, 816), Vector2(1024, 780.33), Vector2(1024, 816), Vector2(1024, 816), Vector2(1024, 780.33), Vector2(1024, 816)]
+}
+
+[sub_resource type="Animation" id="Animation_b14qr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1024, 816)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8jjy3"]
+_data = {
+"RESET": SubResource("Animation_b14qr"),
+"bounce": SubResource("Animation_rkjo3")
+}
+
+[sub_resource type="Animation" id="Animation_i3xdq"]
+resource_name = "bounce2"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.266667, 0.8, 0.866667, 1.06667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(200, 968), Vector2(200, 920), Vector2(200, 968), Vector2(200, 968), Vector2(200, 920), Vector2(200, 968)]
+}
+
+[sub_resource type="Animation" id="Animation_rsuh8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(200, 968)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e8ny8"]
+_data = {
+"RESET": SubResource("Animation_rsuh8"),
+"bounce2": SubResource("Animation_i3xdq")
+}
+
+[sub_resource type="Animation" id="Animation_ut65g"]
+resource_name = "bounce3"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.4, 0.9, 0.966667, 1.3),
+"transitions": PackedFloat32Array(1, 1.46409, 1, 1, 1.46409, 1),
+"update": 0,
+"values": [Vector2(1704, 920), Vector2(1704, 850), Vector2(1704, 920), Vector2(1704, 920), Vector2(1704, 850), Vector2(1704, 920)]
+}
+
+[sub_resource type="Animation" id="Animation_l6rhj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1704, 920)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lvw35"]
+_data = {
+"RESET": SubResource("Animation_l6rhj"),
+"bounce3": SubResource("Animation_ut65g")
+}
+
+[node name="Crowd" type="Node2D"]
+
+[node name="Crowd1" type="Sprite2D" parent="."]
+position = Vector2(1024, 816)
+scale = Vector2(1.425, 1.74)
+texture = ExtResource("1_u04ay")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Crowd1"]
+libraries = {
+"": SubResource("AnimationLibrary_8jjy3")
+}
+autoplay = "bounce"
+
+[node name="Crowd2" type="Sprite2D" parent="."]
+position = Vector2(200, 968)
+rotation = 0.242601
+scale = Vector2(0.460547, 0.470188)
+texture = ExtResource("2_r7bau")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Crowd2"]
+libraries = {
+"": SubResource("AnimationLibrary_e8ny8")
+}
+autoplay = "bounce2"
+
+[node name="Crowd3" type="Sprite2D" parent="."]
+position = Vector2(1704, 920)
+rotation = -0.0802851
+scale = Vector2(0.508333, 0.564516)
+texture = ExtResource("2_r7bau")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Crowd3"]
+libraries = {
+"": SubResource("AnimationLibrary_lvw35")
+}
+autoplay = "bounce3"

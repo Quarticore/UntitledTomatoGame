@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://de4vrd6yr3nho"]
+[gd_scene load_steps=16 format=3 uid="uid://de4vrd6yr3nho"]
 
 [ext_resource type="Script" path="res://assets/scripts/pause.gd" id="1_3bpvp"]
 [ext_resource type="Script" path="res://assets/scripts/selection_manager.gd" id="1_l4jld"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://assets/scripts/enemy_pattern.gd" id="4_wvsy8"]
 [ext_resource type="PackedScene" uid="uid://d2q3qtuygsylc" path="res://scenes/beat_indicator.tscn" id="4_xrbsb"]
 [ext_resource type="Script" path="res://assets/scripts/gameplay_ui.gd" id="5_03y6y"]
+[ext_resource type="PackedScene" uid="uid://btk7vlupffffw" path="res://scenes/crowd.tscn" id="6_8qqgb"]
 
 [sub_resource type="Resource" id="Resource_yb7fm"]
 script = ExtResource("4_wvsy8")
@@ -113,6 +114,8 @@ behaviour = SubResource("Resource_exxfo")
 position = Vector2(960, 544)
 
 [node name="AudioManager" parent="GameContainer/GameViewport" instance=ExtResource("3_m7yqh")]
+
+[node name="Crowd" parent="GameContainer/GameViewport" instance=ExtResource("6_8qqgb")]
 
 [node name="GameplayUI" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0)
