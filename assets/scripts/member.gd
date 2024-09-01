@@ -25,7 +25,8 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		selected.emit()
 
 func show_light():
-	$AnimationPlayer.play("show_light")
+	if !game_manager.in_battle:
+		$AnimationPlayer.play("show_light")
 
 func hide_light():
 	$AnimationPlayer.play("hide_light")
