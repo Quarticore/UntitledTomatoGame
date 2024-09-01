@@ -7,6 +7,14 @@ var in_battle_with = ""
 var in_double_time = false
 var pct_left = 100
 
+func _process(_delta):
+	# Special consideration for Member3
+	if in_battle_with != "Member3":
+		return
+		
+	if pct_left < 75 and !in_double_time:
+		trigger_double_time() 
+
 func set_battling(name):
 	in_battle = true
 	in_battle_with = name
@@ -16,6 +24,28 @@ func not_battling():
 	in_battle = false
 	in_battle_with = ""
 	pct_left = 0
+	
+func trigger_double_time():
+	if in_double_time:
+		return
+		
+	var audio_manager: AudioManager = get_node("/root/Main/GameContainer/GameViewport/AudioManager")
+	audio_manager.recalculate(audio_manager.bpm * 2)
+	audio_manager.input_within = 0.2
+	audio_manager.input_offset = -0.35
+	
+	in_double_time = true
+	
+func exit_double_time():
+	if !in_double_time:
+		return
+		
+	var audio_manager: AudioManager = get_node("/root/Main/GameContainer/GameViewport/AudioManager")
+	audio_manager.recalculate(audio_manager.bpm / 2)
+	audio_manager.input_within = 0.3
+	audio_manager.input_offset = -0.3
+	
+	in_double_time = false
 	
 func move_camera_back():
 	var pos_x = 960
