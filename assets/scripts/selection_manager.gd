@@ -7,9 +7,19 @@ var root_path = "/root/Main/GameContainer/GameViewport/"
 @onready var Member3: Node2D = get_node(root_path + "Member3")
 @onready var Camera: Camera2D = get_node(root_path + "MainCamera")
 
+func _ready():
+	hide_all_lights()
+
+func hide_all_lights():
+	Member1.hide_light()
+	Member2.hide_light()
+	Member3.hide_light()
+
 func on_select_any():
 	var gameplay_ui = get_node("/root/Main/GameplayUI")
 	gameplay_ui.play_show()
+	
+	hide_all_lights()
 
 func _on_member_hovered() -> void:
 	Member1.show_light()
