@@ -5,6 +5,7 @@ signal rhythm_input
 signal combo_break
 
 @onready var Player: AudioStreamPlayer = $Player
+@onready var settings: GameSettings = preload("res://resources/settings_profile.tres")
 @export var beat_linear: float = 0.0
 var input_within = 0.3
 var input_offset = -0.3
@@ -17,7 +18,7 @@ var last_input_beat = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	settings.changed.connect(_on_settings_changed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -74,3 +75,7 @@ func check_input(beats_elapsed):
 	combo = 0
 	rhythm_input.emit(0.0, combo, input)
 	combo_break.emit()
+
+
+func _on_settings_changed() -> void:
+	Player.volume_db = linear_to_db(settings.volume)
