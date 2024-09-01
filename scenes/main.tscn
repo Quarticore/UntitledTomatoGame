@@ -21,7 +21,7 @@ reduction_per_hit = 5
 [sub_resource type="Resource" id="Resource_yb2n4"]
 script = ExtResource("4_wvsy8")
 chance_to_change = 2.0
-valid_positions = [Vector3(0, 1, 1), Vector3(2, 1, 0), Vector3(1, 0, 1)]
+valid_positions = [Vector3(0, 1, 1), Vector3(1, 1, 0), Vector3(1, 0, 1)]
 maybe_change_every_x_beats = 1
 reduction_per_hit = 5
 
