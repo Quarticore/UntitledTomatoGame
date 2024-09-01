@@ -13,5 +13,3 @@ func _process(delta: float) -> void:
 			# Instantiate the menu in the ui viewport
 			menu_ref = MENU.instantiate()
 			get_tree().root.add_child.call_deferred(menu_ref)
-		
-	pass

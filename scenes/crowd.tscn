@@ -1,0 +1,253 @@
+[gd_scene load_steps=18 format=3 uid="uid://btk7vlupffffw"]
+
+[ext_resource type="Texture2D" uid="uid://bam41mre2e6dg" path="res://assets/images/crowd1.png" id="1_u04ay"]
+[ext_resource type="Texture2D" uid="uid://dfaem3gkjjvjq" path="res://assets/images/crowd2.png" id="2_r7bau"]
+
+[sub_resource type="Animation" id="Animation_ce7vh"]
+resource_name = "bounce4"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.566667, 1.1, 1.16667, 1.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(136, 840), Vector2(136, 790), Vector2(136, 840), Vector2(136, 840), Vector2(136, 790), Vector2(136, 840)]
+}
+
+[sub_resource type="Animation" id="Animation_v5cjb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(136, 840)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n0wq0"]
+_data = {
+"RESET": SubResource("Animation_v5cjb"),
+"bounce4": SubResource("Animation_ce7vh")
+}
+
+[sub_resource type="Animation" id="Animation_50p15"]
+resource_name = "bounce5"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.266667, 0.366667, 0.733333, 1.33333, 1.43333, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1960, 816), Vector2(1960, 740), Vector2(1960, 816), Vector2(1960, 816), Vector2(1960, 740), Vector2(1960, 816)]
+}
+
+[sub_resource type="Animation" id="Animation_levpg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1960, 816)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hnnjb"]
+_data = {
+"RESET": SubResource("Animation_levpg"),
+"bounce5": SubResource("Animation_50p15")
+}
+
+[sub_resource type="Animation" id="Animation_rkjo3"]
+resource_name = "bounce"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.266667, 0.666667, 0.733333, 0.933333),
+"transitions": PackedFloat32Array(1, 1.56917, 1, 1, 1.56917, 1),
+"update": 0,
+"values": [Vector2(1024, 816), Vector2(1024, 780.33), Vector2(1024, 816), Vector2(1024, 816), Vector2(1024, 780.33), Vector2(1024, 816)]
+}
+
+[sub_resource type="Animation" id="Animation_b14qr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1024, 816)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8jjy3"]
+_data = {
+"RESET": SubResource("Animation_b14qr"),
+"bounce": SubResource("Animation_rkjo3")
+}
+
+[sub_resource type="Animation" id="Animation_i3xdq"]
+resource_name = "bounce2"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.266667, 0.8, 0.866667, 1.06667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(200, 968), Vector2(200, 920), Vector2(200, 968), Vector2(200, 968), Vector2(200, 920), Vector2(200, 968)]
+}
+
+[sub_resource type="Animation" id="Animation_rsuh8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(200, 968)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e8ny8"]
+_data = {
+"RESET": SubResource("Animation_rsuh8"),
+"bounce2": SubResource("Animation_i3xdq")
+}
+
+[sub_resource type="Animation" id="Animation_ut65g"]
+resource_name = "bounce3"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.4, 0.9, 0.966667, 1.3),
+"transitions": PackedFloat32Array(1, 1.46409, 1, 1, 1.46409, 1),
+"update": 0,
+"values": [Vector2(1704, 920), Vector2(1704, 850), Vector2(1704, 920), Vector2(1704, 920), Vector2(1704, 850), Vector2(1704, 920)]
+}
+
+[sub_resource type="Animation" id="Animation_l6rhj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1704, 920)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lvw35"]
+_data = {
+"RESET": SubResource("Animation_l6rhj"),
+"bounce3": SubResource("Animation_ut65g")
+}
+
+[node name="Crowd" type="Node2D"]
+
+[node name="Crowd4" type="Sprite2D" parent="."]
+position = Vector2(136, 840)
+scale = Vector2(1.31667, 1.68)
+texture = ExtResource("1_u04ay")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Crowd4"]
+libraries = {
+"": SubResource("AnimationLibrary_n0wq0")
+}
+autoplay = "bounce4"
+
+[node name="Crowd5" type="Sprite2D" parent="."]
+position = Vector2(1960, 816)
+scale = Vector2(1.45833, 1.62)
+texture = ExtResource("1_u04ay")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Crowd5"]
+libraries = {
+"": SubResource("AnimationLibrary_hnnjb")
+}
+autoplay = "bounce5"
+
+[node name="Crowd1" type="Sprite2D" parent="."]
+position = Vector2(1024, 816)
+scale = Vector2(1.425, 1.74)
+texture = ExtResource("1_u04ay")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Crowd1"]
+libraries = {
+"": SubResource("AnimationLibrary_8jjy3")
+}
+autoplay = "bounce"
+
+[node name="Crowd2" type="Sprite2D" parent="."]
+position = Vector2(200, 968)
+rotation = 0.242601
+scale = Vector2(0.460547, 0.470188)
+texture = ExtResource("2_r7bau")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Crowd2"]
+libraries = {
+"": SubResource("AnimationLibrary_e8ny8")
+}
+autoplay = "bounce2"
+
+[node name="Crowd3" type="Sprite2D" parent="."]
+position = Vector2(1704, 920)
+rotation = -0.0802851
+scale = Vector2(0.508333, 0.564516)
+texture = ExtResource("2_r7bau")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Crowd3"]
+libraries = {
+"": SubResource("AnimationLibrary_lvw35")
+}
+autoplay = "bounce3"

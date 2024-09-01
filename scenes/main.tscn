@@ -1,17 +1,32 @@
-[gd_scene load_steps=15 format=3 uid="uid://de4vrd6yr3nho"]
+[gd_scene load_steps=16 format=3 uid="uid://de4vrd6yr3nho"]
 
 [ext_resource type="Script" path="res://assets/scripts/pause.gd" id="1_3bpvp"]
 [ext_resource type="Script" path="res://assets/scripts/selection_manager.gd" id="1_l4jld"]
-[ext_resource type="PackedScene" path="res://scenes/member.tscn" id="2_ak1xx"]
+[ext_resource type="PackedScene" uid="uid://rf7wiy4b21xh" path="res://scenes/member.tscn" id="2_ak1xx"]
 [ext_resource type="PackedScene" uid="uid://cpp7ddhx8pqcf" path="res://scenes/audio_manager.tscn" id="3_m7yqh"]
+[ext_resource type="Script" path="res://assets/scripts/enemy_pattern.gd" id="4_wvsy8"]
 [ext_resource type="PackedScene" uid="uid://d2q3qtuygsylc" path="res://scenes/beat_indicator.tscn" id="4_xrbsb"]
 [ext_resource type="PackedScene" uid="uid://cswvepkr1um18" path="res://scenes/tomato_shooter.tscn" id="5_2ftpm"]
 [ext_resource type="Script" path="res://assets/scripts/gameplay_ui.gd" id="5_03y6y"]
+[ext_resource type="PackedScene" uid="uid://btk7vlupffffw" path="res://scenes/crowd.tscn" id="6_8qqgb"]
 
-[sub_resource type="Gradient" id="Gradient_w5xsi"]
+[sub_resource type="Resource" id="Resource_yb7fm"]
+script = ExtResource("4_wvsy8")
+chance_to_change = 1.0
+valid_positions = [Vector3(0, 0, 1), Vector3(0, 1, 0), Vector3(1, 0, 0)]
+maybe_change_every_x_beats = 3
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_1rt5t"]
-gradient = SubResource("Gradient_w5xsi")
+[sub_resource type="Resource" id="Resource_yb2n4"]
+script = ExtResource("4_wvsy8")
+chance_to_change = 2.0
+valid_positions = [Vector3(0, 0, 1), Vector3(0, 1, 0), Vector3(1, 0, 0)]
+maybe_change_every_x_beats = 1
+
+[sub_resource type="Resource" id="Resource_exxfo"]
+script = ExtResource("4_wvsy8")
+chance_to_change = 1.0
+valid_positions = [Vector3(0, 0, 1), Vector3(0, 1, 0), Vector3(1, 0, 0)]
+maybe_change_every_x_beats = 1
 
 [sub_resource type="Animation" id="Animation_3c3il"]
 length = 0.001
@@ -66,9 +81,6 @@ _data = {
 "fade_out": SubResource("Animation_5n3vl")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_5fu4v"]
-font_size = 32
-
 [node name="Main" type="Node2D"]
 script = ExtResource("1_3bpvp")
 
@@ -87,23 +99,24 @@ render_target_update_mode = 4
 [node name="SelectionManager" type="Node" parent="GameContainer/GameViewport"]
 script = ExtResource("1_l4jld")
 
-[node name="Member" parent="GameContainer/GameViewport" instance=ExtResource("2_ak1xx")]
+[node name="Member1" parent="GameContainer/GameViewport" instance=ExtResource("2_ak1xx")]
 position = Vector2(480, 472)
+behaviour = SubResource("Resource_yb7fm")
 
 [node name="Member2" parent="GameContainer/GameViewport" instance=ExtResource("2_ak1xx")]
 position = Vector2(912, 520)
+behaviour = SubResource("Resource_yb2n4")
 
 [node name="Member3" parent="GameContainer/GameViewport" instance=ExtResource("2_ak1xx")]
 position = Vector2(1368, 488)
-
-[node name="Light" type="Sprite2D" parent="GameContainer/GameViewport"]
-position = Vector2(944, 160)
-texture = SubResource("GradientTexture2D_1rt5t")
+behaviour = SubResource("Resource_exxfo")
 
 [node name="MainCamera" type="Camera2D" parent="GameContainer/GameViewport"]
 position = Vector2(960, 544)
 
 [node name="AudioManager" parent="GameContainer/GameViewport" instance=ExtResource("3_m7yqh")]
+
+[node name="Crowd" parent="GameContainer/GameViewport" instance=ExtResource("6_8qqgb")]
 
 [node name="GameplayUI" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -117,22 +130,20 @@ libraries = {
 [node name="BeatIndicator" parent="GameplayUI" node_paths=PackedStringArray("audio_manager") instance=ExtResource("4_xrbsb")]
 audio_manager = NodePath("../../GameContainer/GameViewport/AudioManager")
 
-[node name="HitQualityIndicator" type="Label" parent="GameplayUI"]
-offset_left = 1056.0
-offset_top = 800.0
-offset_right = 1136.0
-offset_bottom = 832.0
-text = "INDICATOR"
-label_settings = SubResource("LabelSettings_5fu4v")
+[node name="HitQualityContainer" type="Node2D" parent="GameplayUI"]
+position = Vector2(1200, 792)
 
 [node name="TomatoShooter" parent="." node_paths=PackedStringArray("audio_manager") instance=ExtResource("5_2ftpm")]
 position = Vector2(957, 614)
 audio_manager = NodePath("../GameContainer/GameViewport/AudioManager")
-
-[connection signal="hovered" from="GameContainer/GameViewport/Member" to="GameContainer/GameViewport/SelectionManager" method="_on_member_hovered"]
-[connection signal="selected" from="GameContainer/GameViewport/Member" to="GameContainer/GameViewport/SelectionManager" method="_on_member_selected"]
+[connection signal="hovered" from="GameContainer/GameViewport/Member1" to="GameContainer/GameViewport/SelectionManager" method="_on_member_hovered"]
+[connection signal="selected" from="GameContainer/GameViewport/Member1" to="GameContainer/GameViewport/SelectionManager" method="_on_member_selected"]
 [connection signal="hovered" from="GameContainer/GameViewport/Member2" to="GameContainer/GameViewport/SelectionManager" method="_on_member_2_hovered"]
 [connection signal="selected" from="GameContainer/GameViewport/Member2" to="GameContainer/GameViewport/SelectionManager" method="_on_member_2_selected"]
 [connection signal="hovered" from="GameContainer/GameViewport/Member3" to="GameContainer/GameViewport/SelectionManager" method="_on_member_3_hovered"]
 [connection signal="selected" from="GameContainer/GameViewport/Member3" to="GameContainer/GameViewport/SelectionManager" method="_on_member_3_selected"]
 [connection signal="rhythm_input" from="GameContainer/GameViewport/AudioManager" to="GameplayUI" method="_on_audio_manager_rhythm_input"]
+
+[editable path="GameContainer/GameViewport/Member1"]
+[editable path="GameContainer/GameViewport/Member2"]
+[editable path="GameContainer/GameViewport/Member3"]
