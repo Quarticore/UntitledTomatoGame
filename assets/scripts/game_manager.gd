@@ -1,11 +1,18 @@
 extends Node
 
 @onready var gameplay_ui = get_node("/root/Main/GameplayUI")
+@onready var selection_manager = get_node("/root/Main/GameContainer/GameViewport/SelectionManager")
 
 var in_battle = false
 var in_battle_with = ""
 var in_double_time = false
 var pct_left = 100
+
+func _ready():
+	self.call_deferred("_started")
+
+func _started():
+	selection_manager.set_stage(0)
 
 func _process(_delta):
 	# Special consideration for Member3
@@ -62,6 +69,8 @@ func move_camera_back():
 	if member.defeat_sprite != null:
 		var sprite = get_node("/root/Main/GameContainer/GameViewport/" + in_battle_with + "/Sprite")
 		sprite.texture = member.defeat_sprite
+		
+	selection_manager.set_stage(selection_manager.stage + 1)
 
 func successful_hit(input):
 	if !in_battle:

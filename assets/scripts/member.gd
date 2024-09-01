@@ -49,12 +49,10 @@ func on_new_beat(elapsed):
 	$SquashPlayer.play("squash")
 	
 	if !game_manager.in_battle or game_manager.in_battle_with != name:
-		print("not battling")
 		return
 	
 	if beats_until_change != 0:
 		beats_until_change -= 1
-		print("not changing yet")
 		return
 	else:
 		beats_until_change = behaviour.maybe_change_every_x_beats - 1
