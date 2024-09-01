@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://rf7wiy4b21xh"]
+[gd_scene load_steps=13 format=3 uid="uid://rf7wiy4b21xh"]
 
 [ext_resource type="Script" path="res://assets/scripts/member.gd" id="1_77kid"]
 [ext_resource type="Texture2D" uid="uid://dysefy3nlaljq" path="res://assets/images/stage_light.png" id="2_pige0"]
@@ -63,6 +63,43 @@ _data = {
 "show_light": SubResource("Animation_rv2ro")
 }
 
+[sub_resource type="Animation" id="Animation_fvbne"]
+resource_name = "squash"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.5, 2.875), Vector2(1.5, 2.38), Vector2(1.5, 2.875)]
+}
+
+[sub_resource type="Animation" id="Animation_a2ctl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.5, 2.875)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1fxrp"]
+_data = {
+"RESET": SubResource("Animation_a2ctl"),
+"squash": SubResource("Animation_fvbne")
+}
+
 [node name="Member" type="Node2D"]
 script = ExtResource("1_77kid")
 
@@ -89,6 +126,11 @@ offset_bottom = 23.0
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_l0awc")
+}
+
+[node name="SquashPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1fxrp")
 }
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

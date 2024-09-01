@@ -34,6 +34,9 @@ func get_position():
 	return behaviour.valid_positions[position_idx]
 
 func on_new_beat(elapsed):
+	# Squash em
+	$SquashPlayer.play("squash")
+	
 	if !game_manager.in_battle or game_manager.in_battle_with != name:
 		print("not battling")
 		return
