@@ -13,6 +13,7 @@ var bps = bpm / 60
 var offset = 0.2
 var last_beat_elapsed = 0.0
 var combo = 0
+var last_input_beat = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -51,8 +52,15 @@ func check_input(beats_elapsed):
 		# No input
 		return
 	
+	
 	var beat_whole = round(beats_elapsed)
 	var difference = abs(beats_elapsed - beat_whole)
+	
+	if last_input_beat == beat_whole:
+		# no spamming!
+		return
+	
+	last_input_beat = beat_whole
 	
 	if (difference <= input_within):
 		# We hit! Show accuracy
