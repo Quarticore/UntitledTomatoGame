@@ -105,10 +105,6 @@ position = Vector2(960, 544)
 
 [node name="AudioManager" parent="GameContainer/GameViewport" instance=ExtResource("3_m7yqh")]
 
-[node name="TomatoShooter" parent="GameContainer/GameViewport" node_paths=PackedStringArray("audio_manager") instance=ExtResource("5_2ftpm")]
-position = Vector2(957, 614)
-audio_manager = NodePath("../AudioManager")
-
 [node name="GameplayUI" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 script = ExtResource("5_03y6y")
@@ -128,6 +124,10 @@ offset_right = 1136.0
 offset_bottom = 832.0
 text = "INDICATOR"
 label_settings = SubResource("LabelSettings_5fu4v")
+
+[node name="TomatoShooter" parent="." node_paths=PackedStringArray("audio_manager") instance=ExtResource("5_2ftpm")]
+position = Vector2(957, 614)
+audio_manager = NodePath("../GameContainer/GameViewport/AudioManager")
 
 [connection signal="hovered" from="GameContainer/GameViewport/Member" to="GameContainer/GameViewport/SelectionManager" method="_on_member_hovered"]
 [connection signal="selected" from="GameContainer/GameViewport/Member" to="GameContainer/GameViewport/SelectionManager" method="_on_member_selected"]
