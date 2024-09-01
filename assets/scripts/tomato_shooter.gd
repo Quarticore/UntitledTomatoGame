@@ -3,16 +3,15 @@ extends Node2D
 
 const TOMATO_SCENE: PackedScene = preload("res://scenes/tomato.tscn")
 const TOMATO: Script = preload("res://assets/scripts/tomato.gd")
+const METRONOME: Script = preload("res://assets/scripts/metronome.gd")
+
+
+@export var audio_manager: METRONOME
 
 @onready var left_spawn: Path2D = $TomatoSpawnLeft
 @onready var middle_spawn: Path2D = $TomatoSpawnMiddle
 @onready var right_spawn: Path2D = $TomatoSpawnRight
 @onready var crosshair: Sprite2D = $Crosshair
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

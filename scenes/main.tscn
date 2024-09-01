@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://de4vrd6yr3nho"]
+[gd_scene load_steps=15 format=3 uid="uid://de4vrd6yr3nho"]
 
 [ext_resource type="Script" path="res://assets/scripts/pause.gd" id="1_3bpvp"]
 [ext_resource type="Script" path="res://assets/scripts/selection_manager.gd" id="1_l4jld"]
 [ext_resource type="PackedScene" path="res://scenes/member.tscn" id="2_ak1xx"]
 [ext_resource type="PackedScene" uid="uid://cpp7ddhx8pqcf" path="res://scenes/audio_manager.tscn" id="3_m7yqh"]
 [ext_resource type="PackedScene" uid="uid://d2q3qtuygsylc" path="res://scenes/beat_indicator.tscn" id="4_xrbsb"]
+[ext_resource type="PackedScene" uid="uid://cswvepkr1um18" path="res://scenes/tomato_shooter.tscn" id="5_2ftpm"]
 [ext_resource type="Script" path="res://assets/scripts/gameplay_ui.gd" id="5_03y6y"]
 
 [sub_resource type="Gradient" id="Gradient_w5xsi"]
@@ -103,6 +104,10 @@ texture = SubResource("GradientTexture2D_1rt5t")
 position = Vector2(960, 544)
 
 [node name="AudioManager" parent="GameContainer/GameViewport" instance=ExtResource("3_m7yqh")]
+
+[node name="TomatoShooter" parent="GameContainer/GameViewport" node_paths=PackedStringArray("audio_manager") instance=ExtResource("5_2ftpm")]
+position = Vector2(957, 614)
+audio_manager = NodePath("../AudioManager")
 
 [node name="GameplayUI" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0)
