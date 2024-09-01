@@ -6,6 +6,7 @@
 [ext_resource type="LabelSettings" uid="uid://6ollg0b4gj7y" path="res://resources/label_settings/option_values.tres" id="3_o0lpl"]
 
 [node name="OptionsMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
