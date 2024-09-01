@@ -24,6 +24,12 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 	if event.is_action("Click"):
 		selected.emit()
 
+func show_light():
+	$AnimationPlayer.play("show_light")
+
+func hide_light():
+	$AnimationPlayer.play("hide_light")
+
 func get_position():
 	return behaviour.valid_positions[position_idx]
 

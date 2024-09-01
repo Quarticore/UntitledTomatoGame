@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://de4vrd6yr3nho"]
+[gd_scene load_steps=15 format=3 uid="uid://de4vrd6yr3nho"]
 
 [ext_resource type="Script" path="res://assets/scripts/pause.gd" id="1_3bpvp"]
 [ext_resource type="Script" path="res://assets/scripts/selection_manager.gd" id="1_l4jld"]
@@ -25,11 +25,6 @@ script = ExtResource("4_wvsy8")
 chance_to_change = 1.0
 valid_positions = [Vector3(0, 0, 1), Vector3(0, 1, 0), Vector3(1, 0, 0)]
 maybe_change_every_x_beats = 1
-
-[sub_resource type="Gradient" id="Gradient_w5xsi"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_1rt5t"]
-gradient = SubResource("Gradient_w5xsi")
 
 [sub_resource type="Animation" id="Animation_3c3il"]
 length = 0.001
@@ -113,10 +108,6 @@ behaviour = SubResource("Resource_yb2n4")
 [node name="Member3" parent="GameContainer/GameViewport" instance=ExtResource("2_ak1xx")]
 position = Vector2(1368, 488)
 behaviour = SubResource("Resource_exxfo")
-
-[node name="Light" type="Sprite2D" parent="GameContainer/GameViewport"]
-position = Vector2(944, 160)
-texture = SubResource("GradientTexture2D_1rt5t")
 
 [node name="MainCamera" type="Camera2D" parent="GameContainer/GameViewport"]
 position = Vector2(960, 544)
