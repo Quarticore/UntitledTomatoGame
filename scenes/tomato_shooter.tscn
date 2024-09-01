@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://assets/scripts/tomato_shooter.gd" id="1_v0rqh"]
 [ext_resource type="Texture2D" uid="uid://cp1ayvxq1h4b0" path="res://icon.svg" id="2_s6651"]
-[ext_resource type="Texture2D" uid="uid://b4qx87qstfen0" path="res://assets/images/tomato_basket_back.png" id="3_vnfnc"]
-[ext_resource type="Texture2D" uid="uid://dw1ioinuvrl4v" path="res://assets/images/tomato.png" id="4_il1j7"]
-[ext_resource type="Texture2D" uid="uid://dkuvtagpptmi6" path="res://assets/images/tomato_basket_front.png" id="5_imun0"]
+[ext_resource type="Texture2D" uid="uid://dehibo2k4cun7" path="res://assets/images/toon_tomato_basket_back.png" id="3_qixhf"]
+[ext_resource type="Texture2D" uid="uid://vqaegfg75bj" path="res://assets/images/toon_tomato.png" id="4_ia6w5"]
+[ext_resource type="Texture2D" uid="uid://c5w50r0ctc67m" path="res://assets/images/toon_tomato_basket_front.png" id="5_3slt8"]
 
 [sub_resource type="Curve2D" id="Curve2D_2rw56"]
 _data = {
@@ -44,31 +44,39 @@ position = Vector2(-581, 435)
 scale = Vector2(2.66, 2.66)
 
 [node name="BasketBack" type="Sprite2D" parent="Basket"]
-texture = ExtResource("3_vnfnc")
+texture_filter = 1
+texture = ExtResource("3_qixhf")
 
 [node name="Tomato" type="Sprite2D" parent="Basket"]
+texture_filter = 1
 position = Vector2(-34, -64)
-texture = ExtResource("4_il1j7")
+texture = ExtResource("4_ia6w5")
 
 [node name="Tomato2" type="Sprite2D" parent="Basket"]
+texture_filter = 1
 position = Vector2(-70, -53)
-texture = ExtResource("4_il1j7")
+texture = ExtResource("4_ia6w5")
 
 [node name="Tomato3" type="Sprite2D" parent="Basket"]
+texture_filter = 1
 position = Vector2(18, -66)
-texture = ExtResource("4_il1j7")
+texture = ExtResource("4_ia6w5")
 
 [node name="Tomato4" type="Sprite2D" parent="Basket"]
+texture_filter = 1
 position = Vector2(-12, -49)
-texture = ExtResource("4_il1j7")
+texture = ExtResource("4_ia6w5")
 
 [node name="Tomato5" type="Sprite2D" parent="Basket"]
+texture_filter = 1
 position = Vector2(64, -56)
-texture = ExtResource("4_il1j7")
+texture = ExtResource("4_ia6w5")
 
 [node name="Tomato6" type="Sprite2D" parent="Basket"]
+texture_filter = 1
 position = Vector2(38, -49)
-texture = ExtResource("4_il1j7")
+texture = ExtResource("4_ia6w5")
 
 [node name="BasketFront" type="Sprite2D" parent="Basket"]
-texture = ExtResource("5_imun0")
+texture_filter = 1
+texture = ExtResource("5_3slt8")
