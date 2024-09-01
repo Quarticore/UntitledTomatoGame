@@ -35,4 +35,7 @@ func successful_hit(input):
 	
 	print(pct_left)
 	
+	if pct_left <= 0:
+		member.defeated = true
+	
 	return true

@@ -12,6 +12,7 @@ signal selected
 @onready var label: Label = $TEST_Position
 
 var position_idx = 0
+var defeated = false
 
 func _ready():
 	audio_manager.connect("new_beat", on_new_beat)
@@ -25,7 +26,7 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		selected.emit()
 
 func show_light():
-	if !game_manager.in_battle:
+	if !game_manager.in_battle and !defeated:
 		$AnimationPlayer.play("show_light")
 
 func hide_light():
