@@ -30,7 +30,7 @@ script = ExtResource("4_wvsy8")
 chance_to_change = 1.0
 valid_positions = [Vector3(0, 0, 1), Vector3(0, 1, 0), Vector3(1, 0, 0)]
 maybe_change_every_x_beats = 2
-reduction_per_hit = 5.0
+reduction_per_hit = 2.0
 
 [sub_resource type="Animation" id="Animation_3c3il"]
 length = 0.001

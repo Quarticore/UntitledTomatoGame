@@ -1,4 +1,4 @@
-extends Node
+class_name AudioManager extends Node
 
 signal new_beat
 signal rhythm_input
@@ -15,6 +15,10 @@ var offset = 0.2
 var last_beat_elapsed = 0.0
 var combo = 0
 var last_input_beat = -1
+
+func recalculate(new_bpm):
+	bpm = new_bpm
+	bps = new_bpm / 60
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
