@@ -22,7 +22,7 @@ script = ExtResource("4_wvsy8")
 chance_to_change = 1.0
 valid_positions = [Vector3(0, 0, 1), Vector3(0, 1, 0), Vector3(1, 0, 0)]
 maybe_change_every_x_beats = 3
-reduction_per_hit = 100.0
+reduction_per_hit = 5.0
 
 [sub_resource type="Resource" id="Resource_yb2n4"]
 script = ExtResource("4_wvsy8")
@@ -153,7 +153,8 @@ render_target_update_mode = 4
 [node name="SelectionManager" type="Node" parent="GameContainer/GameViewport"]
 script = ExtResource("1_l4jld")
 
-[node name="Sprite2D" type="Sprite2D" parent="GameContainer/GameViewport"]
+[node name="Background" type="Sprite2D" parent="GameContainer/GameViewport"]
+texture_filter = 1
 position = Vector2(960, 540)
 scale = Vector2(4, 4)
 texture = ExtResource("3_dtaof")
@@ -165,19 +166,26 @@ pos_sprites = Array[Texture2D]([ExtResource("5_psvlr"), ExtResource("6_sw0xo"), 
 defeat_sprite = ExtResource("8_pmdbd")
 
 [node name="Sprite" parent="GameContainer/GameViewport/Member1" index="1"]
+texture_filter = 1
 texture = ExtResource("5_sggue")
 
 [node name="Member2" parent="GameContainer/GameViewport" instance=ExtResource("2_ak1xx")]
-position = Vector2(912, 480)
+position = Vector2(912, 440)
 behaviour = SubResource("Resource_yb2n4")
 pos_sprites = Array[Texture2D]([ExtResource("5_psvlr"), ExtResource("6_sw0xo"), ExtResource("7_oerax")])
 defeat_sprite = ExtResource("8_pmdbd")
+
+[node name="Sprite" parent="GameContainer/GameViewport/Member2" index="1"]
+texture_filter = 1
 
 [node name="Member3" parent="GameContainer/GameViewport" instance=ExtResource("2_ak1xx")]
 position = Vector2(1368, 360)
 behaviour = SubResource("Resource_exxfo")
 pos_sprites = Array[Texture2D]([ExtResource("5_psvlr"), ExtResource("6_sw0xo"), ExtResource("7_oerax")])
 defeat_sprite = ExtResource("8_pmdbd")
+
+[node name="Sprite" parent="GameContainer/GameViewport/Member3" index="1"]
+texture_filter = 1
 
 [node name="MainCamera" type="Camera2D" parent="GameContainer/GameViewport"]
 position = Vector2(960, 544)
