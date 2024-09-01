@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://de4vrd6yr3nho"]
+[gd_scene load_steps=18 format=3 uid="uid://de4vrd6yr3nho"]
 
 [ext_resource type="Script" path="res://assets/scripts/pause.gd" id="1_3bpvp"]
 [ext_resource type="Script" path="res://assets/scripts/selection_manager.gd" id="1_l4jld"]
@@ -85,9 +85,6 @@ _data = {
 "fade_out": SubResource("Animation_5n3vl")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_c8qcq"]
-font_size = 32
-
 [node name="Main" type="Node2D"]
 script = ExtResource("1_3bpvp")
 
@@ -143,15 +140,14 @@ audio_manager = NodePath("../../GameContainer/GameViewport/AudioManager")
 [node name="HitQualityContainer" type="Node2D" parent="GameplayUI"]
 position = Vector2(1200, 792)
 
-[node name="TEST_PercentLabel" type="Label" parent="GameplayUI"]
-offset_right = 184.0
-offset_bottom = 72.0
-text = "100%"
-label_settings = SubResource("LabelSettings_c8qcq")
-
 [node name="TomatoShooter" parent="GameplayUI" node_paths=PackedStringArray("audio_manager") instance=ExtResource("5_2ftpm")]
 position = Vector2(957, 614)
 audio_manager = NodePath("../../GameContainer/GameViewport/AudioManager")
+
+[node name="HealthBar" type="ProgressBar" parent="GameplayUI"]
+offset_right = 495.0
+offset_bottom = 48.0
+value = 100.0
 
 [connection signal="hovered" from="GameContainer/GameViewport/Member1" to="GameContainer/GameViewport/SelectionManager" method="_on_member_hovered"]
 [connection signal="selected" from="GameContainer/GameViewport/Member1" to="GameContainer/GameViewport/SelectionManager" method="_on_member_selected"]

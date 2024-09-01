@@ -10,7 +10,7 @@ const HIT_MISS = preload("res://assets/images/input_miss.png")
 
 func _process(delta):
 	var pct = game_manager.pct_left
-	$TEST_PercentLabel.text = str(pct) + "%"
+	$HealthBar.value = pct
 
 func play_show():
 	$AnimationPlayer.play("fade_in")
