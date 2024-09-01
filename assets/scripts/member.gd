@@ -1,4 +1,4 @@
-extends Node
+class_name Member extends Node
 
 signal hovered
 signal selected
@@ -25,12 +25,13 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		selected.emit()
 
 func show_light():
-	$AnimationPlayer.play("show_light")
+	if !game_manager.in_battle:
+		$AnimationPlayer.play("show_light")
 
 func hide_light():
 	$AnimationPlayer.play("hide_light")
 
-func get_position():
+func get_b_position():
 	return behaviour.valid_positions[position_idx]
 
 func on_new_beat(elapsed):
@@ -54,7 +55,7 @@ func on_new_beat(elapsed):
 	if !will_change:
 		return
 		
-	var arr = behaviour.valid_positions.filter(func(n): return n != get_position())
+	var arr = behaviour.valid_positions.filter(func(n): return n != get_b_position())
 	
 	# Pick one
 	var new_val = arr[rng.randi_range(0, arr.size() - 1)]

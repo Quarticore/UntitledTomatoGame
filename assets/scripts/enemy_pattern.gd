@@ -13,3 +13,7 @@ class_name EnemyPattern extends Resource
 	set(val):
 		maybe_change_every_x_beats = val
 		emit_changed()
+@export var reduction_per_hit: int = 5:
+	set(val):
+		reduction_per_hit = val
+		emit_changed()

@@ -40,8 +40,7 @@ func _on_member_selected() -> void:
 	Camera.zoom = Vector2(2, 2)
 	Camera.global_position = Member1.global_position
 	
-	Manager.in_battle = true
-	Manager.in_battle_with = "Member1"
+	Manager.set_battling("Member1")
 	
 	on_select_any()
 
@@ -49,8 +48,7 @@ func _on_member_2_selected() -> void:
 	Camera.zoom = Vector2(2, 2)
 	Camera.global_position = Member2.global_position
 	
-	Manager.in_battle = true
-	Manager.in_battle_with = "Member2"
+	Manager.set_battling("Member2")
 	
 	on_select_any()
 
@@ -58,7 +56,6 @@ func _on_member_3_selected() -> void:
 	Camera.zoom = Vector2(2, 2)
 	Camera.global_position = Member3.global_position
 	
-	Manager.in_battle = true
-	Manager.in_battle_with = "Member3"
+	Manager.set_battling("Member3")
 	
 	on_select_any()
