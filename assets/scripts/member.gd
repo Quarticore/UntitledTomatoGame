@@ -4,6 +4,7 @@ signal hovered
 signal selected
 
 @export var behaviour: EnemyPattern
+@export var pos_sprites: Array[Texture2D] = []
 @onready var audio_manager: Node = $"../AudioManager"
 @onready var game_manager: GameManager = get_node("/root/GameManager")
 @onready var beats_until_change = behaviour.maybe_change_every_x_beats - 1
@@ -34,6 +35,13 @@ func hide_light():
 
 func get_b_position():
 	return behaviour.valid_positions[position_idx]
+	
+func set_b_position(new_idx):
+	position_idx = new_idx
+	label.text = "Position: " + str(position_idx)
+	
+	if pos_sprites.size() - 1 <= position_idx:
+		$Sprite.texture = pos_sprites[position_idx]
 
 func on_new_beat(elapsed):
 	# Squash em
@@ -62,6 +70,4 @@ func on_new_beat(elapsed):
 	var new_val = arr[rng.randi_range(0, arr.size() - 1)]
 	var new_idx = behaviour.valid_positions.find(new_val)
 	
-	position_idx = new_idx
-	
-	label.text = "Position: " + str(position_idx)
+	set_b_position(new_idx)
