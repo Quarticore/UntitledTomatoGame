@@ -8,9 +8,21 @@ const MIN_SIZE: Vector2 = Vector2(0.5, 0.5)
 @onready var fade_timer: Timer = $FadeTimer
 @onready var travel_timer: Timer = $TravelTimer
 
+var rot_speed: float = randf_range(600, 900)
+
+
+func _ready() -> void:
+	rotation_degrees = randf_range(0, 360)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# Side dependent rotation direction
+	if global_position.x < 960:
+		rotation_degrees += rot_speed * delta
+	else:
+		rotation_degrees += -rot_speed * delta
+	
 	# Moves the tomato along the path according to the travel_timeer
 	progress_ratio = inverse_lerp(travel_timer.wait_time, 0.0, travel_timer.time_left)
 	
