@@ -2,8 +2,8 @@ extends Node2D
 
 
 const METRONOME: Script = preload("res://assets/scripts/metronome.gd")
-const MIN_SIZE: float = 0.5
-const MAX_SIZE: float = 1.0
+const MIN_SIZE: float = 3
+const MAX_SIZE: float = 4
 const EDGE_POS := Vector2(960, 0)
 
 @export var audio_manager: METRONOME

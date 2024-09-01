@@ -1,26 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2q3qtuygsylc"]
+[gd_scene load_steps=5 format=3 uid="uid://d2q3qtuygsylc"]
 
 [ext_resource type="Script" path="res://assets/scripts/beat_indicator.gd" id="1_eay0s"]
+[ext_resource type="Texture2D" uid="uid://oemw61qailh2" path="res://assets/images/beat_indicator_center.png" id="2_8w6sg"]
 [ext_resource type="Texture2D" uid="uid://cp1ayvxq1h4b0" path="res://icon.svg" id="2_18v7o"]
+[ext_resource type="Texture2D" uid="uid://bh05qfvqyn6ly" path="res://assets/images/beat_indicator_bar.png" id="4_b51rn"]
 
 [node name="BeatIndicator" type="Node2D"]
 position = Vector2(960, 900)
 script = ExtResource("1_eay0s")
 
 [node name="CentreIndicator" type="Sprite2D" parent="."]
-texture = ExtResource("2_18v7o")
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("2_8w6sg")
 
 [node name="IndicatorTrack" type="Sprite2D" parent="."]
+visible = false
 z_index = -1
 scale = Vector2(15, 0.1)
 texture = ExtResource("2_18v7o")
 
 [node name="LeftIndicator" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(-960, 0)
-scale = Vector2(0.15, 1)
-texture = ExtResource("2_18v7o")
+scale = Vector2(4, 4)
+texture = ExtResource("4_b51rn")
 
 [node name="RightIndicator" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(960, 0)
-scale = Vector2(0.15, 1)
-texture = ExtResource("2_18v7o")
+scale = Vector2(4, 4)
+texture = ExtResource("4_b51rn")
