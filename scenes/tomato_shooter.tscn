@@ -1,14 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://3m3uubicpp45"]
+[gd_scene load_steps=8 format=3 uid="uid://3m3uubicpp45"]
 
 [ext_resource type="Script" path="res://assets/scripts/tomato_shooter.gd" id="1_v0rqh"]
-[ext_resource type="Texture2D" uid="uid://cp1ayvxq1h4b0" path="res://icon.svg" id="2_s6651"]
 [ext_resource type="Texture2D" uid="uid://dehibo2k4cun7" path="res://assets/images/toon_tomato_basket_back.png" id="3_qixhf"]
 [ext_resource type="Texture2D" uid="uid://vqaegfg75bj" path="res://assets/images/toon_tomato.png" id="4_ia6w5"]
 [ext_resource type="Texture2D" uid="uid://c5w50r0ctc67m" path="res://assets/images/toon_tomato_basket_front.png" id="5_3slt8"]
 
 [sub_resource type="Curve2D" id="Curve2D_2rw56"]
 _data = {
-"points": PackedVector2Array(-551.386, 777.418, 551.386, -777.418, -662, 357, 0, 0, 0, 0, -52, 1)
+"points": PackedVector2Array(-551.386, 777.418, 551.386, -777.418, -662, 357, 0, 0, 0, 0, -168, -24)
 }
 point_count = 2
 
@@ -20,15 +19,12 @@ point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_iycp6"]
 _data = {
-"points": PackedVector2Array(520.93, 796.908, -520.93, -796.908, 622, 351, 0, 0, 0, 0, 56, 0)
+"points": PackedVector2Array(520.93, 796.908, -520.93, -796.908, 622, 351, 0, 0, 0, 0, 128, -40)
 }
 point_count = 2
 
 [node name="TomatoShooter" type="Node2D"]
 script = ExtResource("1_v0rqh")
-
-[node name="Crosshair" type="Sprite2D" parent="."]
-texture = ExtResource("2_s6651")
 
 [node name="TomatoSpawnLeft" type="Path2D" parent="."]
 curve = SubResource("Curve2D_2rw56")

@@ -256,9 +256,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="GameplayUI/HealthBar"]
 layout_mode = 0
-offset_top = -30.0
-offset_right = 216.0
-offset_bottom = 4.0
+offset_top = -26.0
+offset_right = 300.0
+offset_bottom = 8.0
 text = "Crowd Satisfaction"
 label_settings = SubResource("LabelSettings_su6m6")
 
