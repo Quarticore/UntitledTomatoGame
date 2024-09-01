@@ -4,9 +4,9 @@ extends Node2D
 const TOMATO_SCENE: PackedScene = preload("res://scenes/tomato.tscn")
 const TOMATO: Script = preload("res://assets/scripts/tomato.gd")
 
-@onready var left_spawn: Node2D = $TomatoSpawnLeft
-@onready var middle_spawn: Node2D = $TomatoSpawnMiddle
-@onready var right_spawn: Node2D = $TomatoSpawnRight
+@onready var left_spawn: Path2D = $TomatoSpawnLeft
+@onready var middle_spawn: Path2D = $TomatoSpawnMiddle
+@onready var right_spawn: Path2D = $TomatoSpawnRight
 @onready var crosshair: Sprite2D = $Crosshair
 
 
@@ -18,17 +18,15 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("InputLeft"):
-		spawn_at_point(TOMATO_SCENE.instantiate(), left_spawn)
+		spawn_at_path(TOMATO_SCENE.instantiate(), left_spawn)
 	
 	if Input.is_action_just_pressed("InputMiddle"):
-		spawn_at_point(TOMATO_SCENE.instantiate(), middle_spawn)
+		spawn_at_path(TOMATO_SCENE.instantiate(), middle_spawn)
 	
 	if Input.is_action_just_pressed("InputRight"):
-		spawn_at_point(TOMATO_SCENE.instantiate(), right_spawn)
+		spawn_at_path(TOMATO_SCENE.instantiate(), right_spawn)
 
 
 
-func spawn_at_point(instance: TOMATO, point: Node2D) -> void:
-	add_child(instance)
-	instance.start_pos = point.position
-	instance.target = crosshair.position
+func spawn_at_path(instance: TOMATO, path: Path2D) -> void:
+	path.add_child(instance)

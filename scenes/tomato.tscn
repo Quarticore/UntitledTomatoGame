@@ -3,10 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://cp1ayvxq1h4b0" path="res://icon.svg" id="1_wpaf5"]
 [ext_resource type="Script" path="res://assets/scripts/tomato.gd" id="2_r1ndb"]
 
-[node name="Tomato" type="Sprite2D"]
+[node name="Tomato" type="PathFollow2D"]
+rotates = false
+script = ExtResource("2_r1ndb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_wpaf5")
-script = ExtResource("2_r1ndb")
 
 [node name="FadeTimer" type="Timer" parent="."]
 one_shot = true

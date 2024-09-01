@@ -1,19 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://cswvepkr1um18"]
+[gd_scene load_steps=6 format=3 uid="uid://cswvepkr1um18"]
 
 [ext_resource type="Script" path="res://assets/scripts/tomato_shooter.gd" id="1_v0rqh"]
 [ext_resource type="Texture2D" uid="uid://cp1ayvxq1h4b0" path="res://icon.svg" id="2_s6651"]
 
+[sub_resource type="Curve2D" id="Curve2D_2rw56"]
+_data = {
+"points": PackedVector2Array(-551.386, 777.418, 551.386, -777.418, -662, 357, 0, 0, 0, 0, -52, 1)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_73q6d"]
+_data = {
+"points": PackedVector2Array(37.6104, 697.914, -37.6104, -697.914, -9, 328, 0, 0, 0, 0, -1, 1)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_iycp6"]
+_data = {
+"points": PackedVector2Array(520.93, 796.908, -520.93, -796.908, 622, 351, 0, 0, 0, 0, 56, 0)
+}
+point_count = 2
+
 [node name="TomatoShooter" type="Node2D"]
 script = ExtResource("1_v0rqh")
 
-[node name="TomatoSpawnLeft" type="Node2D" parent="."]
-position = Vector2(-662, 356)
-
-[node name="TomatoSpawnMiddle" type="Node2D" parent="."]
-position = Vector2(-12, 328)
-
-[node name="TomatoSpawnRight" type="Node2D" parent="."]
-position = Vector2(632, 358)
-
 [node name="Crosshair" type="Sprite2D" parent="."]
 texture = ExtResource("2_s6651")
+
+[node name="TomatoSpawnLeft" type="Path2D" parent="."]
+curve = SubResource("Curve2D_2rw56")
+
+[node name="TomatoSpawnMiddle" type="Path2D" parent="."]
+curve = SubResource("Curve2D_73q6d")
+
+[node name="TomatoSpawnRight" type="Path2D" parent="."]
+curve = SubResource("Curve2D_iycp6")
