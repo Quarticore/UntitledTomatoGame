@@ -1,7 +1,7 @@
 extends PathFollow2D
 
 
-const MAX_SIZE: Vector2 = Vector2(1.0, 1.0)
+const MAX_SIZE: Vector2 = Vector2(6.0, 6.0)
 const MIN_SIZE: Vector2 = Vector2(0.5, 0.5)
 
 @onready var sprite: Sprite2D = $Sprite2D

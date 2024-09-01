@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dog8o4858ere7"]
 
-[ext_resource type="Texture2D" uid="uid://cp1ayvxq1h4b0" path="res://icon.svg" id="1_wpaf5"]
+[ext_resource type="Texture2D" uid="uid://dw1ioinuvrl4v" path="res://assets/images/tomato.png" id="2_p2j80"]
 [ext_resource type="Script" path="res://assets/scripts/tomato.gd" id="2_r1ndb"]
 
 [node name="Tomato" type="PathFollow2D"]
@@ -8,8 +8,7 @@ rotates = false
 script = ExtResource("2_r1ndb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_wpaf5")
+texture = ExtResource("2_p2j80")
 
 [node name="FadeTimer" type="Timer" parent="."]
 one_shot = true

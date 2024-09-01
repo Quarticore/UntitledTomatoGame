@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cswvepkr1um18"]
+[gd_scene load_steps=9 format=3 uid="uid://cswvepkr1um18"]
 
 [ext_resource type="Script" path="res://assets/scripts/tomato_shooter.gd" id="1_v0rqh"]
 [ext_resource type="Texture2D" uid="uid://cp1ayvxq1h4b0" path="res://icon.svg" id="2_s6651"]
+[ext_resource type="Texture2D" uid="uid://b4qx87qstfen0" path="res://assets/images/tomato_basket_back.png" id="3_vnfnc"]
+[ext_resource type="Texture2D" uid="uid://dw1ioinuvrl4v" path="res://assets/images/tomato.png" id="4_il1j7"]
+[ext_resource type="Texture2D" uid="uid://dkuvtagpptmi6" path="res://assets/images/tomato_basket_front.png" id="5_imun0"]
 
 [sub_resource type="Curve2D" id="Curve2D_2rw56"]
 _data = {
@@ -35,3 +38,37 @@ curve = SubResource("Curve2D_73q6d")
 
 [node name="TomatoSpawnRight" type="Path2D" parent="."]
 curve = SubResource("Curve2D_iycp6")
+
+[node name="Basket" type="Node2D" parent="."]
+position = Vector2(-581, 435)
+scale = Vector2(2.66, 2.66)
+
+[node name="BasketBack" type="Sprite2D" parent="Basket"]
+texture = ExtResource("3_vnfnc")
+
+[node name="Tomato" type="Sprite2D" parent="Basket"]
+position = Vector2(-34, -64)
+texture = ExtResource("4_il1j7")
+
+[node name="Tomato2" type="Sprite2D" parent="Basket"]
+position = Vector2(-70, -53)
+texture = ExtResource("4_il1j7")
+
+[node name="Tomato3" type="Sprite2D" parent="Basket"]
+position = Vector2(18, -66)
+texture = ExtResource("4_il1j7")
+
+[node name="Tomato4" type="Sprite2D" parent="Basket"]
+position = Vector2(-12, -49)
+texture = ExtResource("4_il1j7")
+
+[node name="Tomato5" type="Sprite2D" parent="Basket"]
+position = Vector2(64, -56)
+texture = ExtResource("4_il1j7")
+
+[node name="Tomato6" type="Sprite2D" parent="Basket"]
+position = Vector2(38, -49)
+texture = ExtResource("4_il1j7")
+
+[node name="BasketFront" type="Sprite2D" parent="Basket"]
+texture = ExtResource("5_imun0")
