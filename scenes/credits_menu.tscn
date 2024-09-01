@@ -43,7 +43,7 @@ text = "BACK"
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
-text = "Made for the Mini Jame Gam hosted by tiimo, AmiableVegetable, mantis roja, AcidBurritos
+text = "Made for the Mini Jame Gam #34 hosted by tiimo, AmiableVegetable, mantis roja, AcidBurritos
 
 Theme: Failure
 Special Object: Tomato
