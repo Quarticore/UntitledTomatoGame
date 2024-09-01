@@ -4,6 +4,7 @@ extends Node
 
 var in_battle = false
 var in_battle_with = ""
+var in_double_time = false
 var pct_left = 100
 
 func set_battling(name):
