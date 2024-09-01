@@ -25,6 +25,9 @@ func move_camera_back():
 	camera.position = Vector2(pos_x, pos_y)
 
 func successful_hit(input):
+	if !in_battle:
+		return
+	
 	var member: Member = get_node("/root/Main/GameContainer/GameViewport/" + in_battle_with)
 	var blocked
 	
